@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../base/keycloak
+  - ../base/account-operator
+  - ../base/extension-content-operator
+  - ../base/portal # the chart needs some love before a deployment can work
+  # - ../base/crd-gateway # the chart needs some love before a deployment can work
