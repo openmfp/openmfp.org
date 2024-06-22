@@ -19,6 +19,6 @@ spec:
     trust:
       openmfp:
         baseDomains: "localhost"
-        authDomain: http://localhost:8080/keycloak/realms/openmfp/protocol/openid-connect
+        authDomain: http://localhost/keycloak/realms/master/protocol/openid-connect
         oidcClientSecretName: openmfp-client
         loginAudience: openmfp

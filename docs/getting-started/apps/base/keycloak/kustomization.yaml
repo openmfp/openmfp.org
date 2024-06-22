@@ -4,3 +4,6 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
+  - sa.yaml
+  - rbac.yaml
+  - job.yaml
