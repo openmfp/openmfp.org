@@ -10,6 +10,8 @@ spec:
     name: portal
   releaseName: portal
   values:
+    http:
+      protocol: http
     image:
       pullSecret: ghcr-credentials # TODO: temporary as long as the repo is private
     istio:
@@ -20,5 +22,6 @@ spec:
       openmfp:
         baseDomains: "localhost"
         authDomain: http://localhost/keycloak/realms/master/protocol/openid-connect
+        tokenUrl: http://keycloak:8080/keycloak/realms/master/protocol/openid-connect/token
         oidcClientSecretName: openmfp-client
         loginAudience: openmfp
