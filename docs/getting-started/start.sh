@@ -8,19 +8,20 @@ if [ -z "${GH_TOKEN}" ]; then
 fi
 
 # Check if kind cluster kind is already running, exit if yes
-if [ $(kind get clusters | grep -c kind) -gt 0 ]; then
+if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
     echo "Kind cluster already running"
     exit 1
 fi
 
 # Create kind cluster
-kind create cluster --config kind-config.yaml
+kind create cluster --config kind-config.yaml --name openmfp
 
 # Install flux
 flux install --components source-controller,helm-controller
 
 # Prepare installation namespace
 kubectl create ns openmfp-system
+
 set +x
 echo "creating secret for ghcr.io"
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN

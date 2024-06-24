@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: portal-virtual-service
+  namespace: openmfp-system
+spec:
+  gateways:
+    - openmfp-system/gateway
+  hosts:
+    - "*"
+  http:
+    - match:
+        - uri:
+            prefix: "/keycloak"
+      route:
+        - destination:
+            host: keycloak.openmfp-system.svc.cluster.local
+            port:
+              number: 8080
+    - route:
+        - destination:
+            host: portal.openmfp-system.svc.cluster.local
+            port:
+              number: 8080

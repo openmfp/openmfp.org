@@ -9,6 +9,9 @@ spec:
     kind: OCIRepository
     name: portal
   releaseName: portal
+  dependsOn:
+    - name: istio-istiod
+      namespace: istio-system
   values:
     http:
       protocol: http

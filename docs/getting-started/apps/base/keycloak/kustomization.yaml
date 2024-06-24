@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
-  - ingress.yaml
+#  - ingress.yaml
   - sa.yaml
   - rbac.yaml
   - job.yaml

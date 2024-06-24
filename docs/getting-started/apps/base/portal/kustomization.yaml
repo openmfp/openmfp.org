@@ -4,4 +4,4 @@ namespace: openmfp-system
 resources:
   - repository.yaml
   - release.yaml
-  - ingress.yaml
+  - vs.yaml
