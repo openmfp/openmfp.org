@@ -44,10 +44,12 @@ spec:
                 fi
               done
               
+              curl -X PUT -H 'Content-Type: application/json' -H "Authorization: bearer ${TOKEN}" -d '{"registrationAllowed": true, "registrationEmailAsUsername": true}' "$KEYCLOAK_URL/admin/realms/master"
+
               # TODO: check if client exists
               # Create the client
               CLIENT_ID="openmfp"
-              RESP=$(curl -X POST -d '{ "clientId": "'$CLIENT_ID'","redirectUris": ["http://localhost/callback?storageType=none"] }' -H "Content-Type:application/json" -H "Authorization: bearer ${TOKEN}" "$KEYCLOAK_URL/realms/master/clients-registrations/default")
+              RESP=$(curl -X POST -d '{ "clientId": "'$CLIENT_ID'","redirectUris": ["http://localhost:8080/callback*"], "attributes": {"access.token.lifespan": 3600} }' -H "Content-Type:application/json" -H "Authorization: bearer ${TOKEN}" "$KEYCLOAK_URL/realms/master/clients-registrations/default")
               ERR=$(echo "$RESP" | jq -r '.error_description')
               
               if [ "$ERR" == "Client Identifier in use" ]; then
