@@ -44,6 +44,7 @@ spec:
                 fi
               done
               
+              echo "Patch the realm to allow for user registartion"
               curl -X PUT -H 'Content-Type: application/json' -H "Authorization: bearer ${TOKEN}" -d '{"registrationAllowed": true, "registrationEmailAsUsername": true}' "$KEYCLOAK_URL/admin/realms/master"
 
               # TODO: check if client exists
@@ -92,6 +93,21 @@ spec:
                 -H "Authorization: Bearer $API_TOKEN" \
                 -H 'Content-Type: application/json' \
                 -d "$PAYLOAD"
+
+              EMAIL_CLIENT_SCOPE=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes" |jq -r '.[] | select(.name=="email") |.id')
+              EMAIL_MAPPER_ID=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$EMAIL_CLIENT_SCOPE/protocol-mappers/models" | jq -r '.[] | select(.name=="email") | .id')
+              EMAIL_MAPPER_PAYLOAD=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$EMAIL_CLIENT_SCOPE/protocol-mappers/models/$EMAIL_MAPPER_ID" | jq -c '.config.["claim.name"]="mail"')
+              curl -X PUT -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d $EMAIL_MAPPER_PAYLOAD "$KEYCLOAK_URL/admin/realms/master/client-scopes/$EMAIL_CLIENT_SCOPE/protocol-mappers/models/$EMAIL_MAPPER_ID"
+
+              PROFILE_CLIENT_SCOPE=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes" |jq -r '.[] | select(.name=="profile") |.id')
+
+              FAMILY_NAME_MAPPER_ID=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$PROFILE_CLIENT_SCOPE/protocol-mappers/models" | jq -r '.[] | select(.name=="family name") | .id')
+              FAMILY_NAME_MAPPER_PAYLOAD=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$PROFILE_CLIENT_SCOPE/protocol-mappers/models/$FAMILY_NAME_MAPPER_ID" | jq -c '.config.["claim.name"]="last_name"')
+              curl -X PUT -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "$FAMILY_NAME_MAPPER_PAYLOAD" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$PROFILE_CLIENT_SCOPE/protocol-mappers/models/$FAMILY_NAME_MAPPER_ID"
+              
+              GIVEN_NAME_MAPPER_ID=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$PROFILE_CLIENT_SCOPE/protocol-mappers/models" | jq -r '.[] | select(.name=="given name") | .id')
+              GIVEN_NAME_MAPPER_PAYLOAD=$(curl -H "Authorization: Bearer $TOKEN" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$PROFILE_CLIENT_SCOPE/protocol-mappers/models/$GIVEN_NAME_MAPPER_ID" | jq -c '.config.["claim.name"]="first_name"')
+              curl -X PUT -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d "$GIVEN_NAME_MAPPER_PAYLOAD" "$KEYCLOAK_URL/admin/realms/master/client-scopes/$PROFILE_CLIENT_SCOPE/protocol-mappers/models/$GIVEN_NAME_MAPPER_ID"
 
           command:
             - /bin/sh
