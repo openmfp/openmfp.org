@@ -47,8 +47,6 @@ spec:
         kind: HelmRepository
         name: istio
   releaseName: istio-istiod
-
-
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease

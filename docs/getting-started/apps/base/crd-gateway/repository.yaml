@@ -1,11 +1,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
-  name: crd-gateway
+  name: example-crd-gateway
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/crd-gateway/helm/crd-gateway
+  url: oci://ghcr.io/openmfp/example-crd-gateway/helm/example-crd-gateway
   ref:
     semver: "*"
   secretRef: # TODO: temporary as long as the repo is private
