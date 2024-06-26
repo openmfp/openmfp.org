@@ -11,4 +11,13 @@ spec:
   releaseName: example-crd-gateway
   values:
     image:
-      imagePullSecret: ghcr-credentials # TODO: temporary as long as the repo is private
+      imagePullSecret: ghcr-credentials
+    virtualService:
+      hosts:
+        - "*"
+    requestAuthentication:
+      jwtRules:
+        - audiences:
+            - master-realm
+          forwardOriginalToken: true
+          issuer: http://localhost:8080/keycloak/realms/master
