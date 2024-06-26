@@ -12,5 +12,3 @@ spec:
   values:
     image:
       imagePullSecret: ghcr-credentials # TODO: temporary as long as the repo is private
-    istio:
-      enabled: false
