@@ -25,6 +25,9 @@ kubectl create ns openmfp-system
 set +x
 echo "creating secret for ghcr.io"
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN
+
+echo "creating secret for keycloak"
+kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin
 set -x
 
 kubectl apply -k ./

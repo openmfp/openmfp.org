@@ -12,11 +12,13 @@ spec:
   dependsOn:
     - name: istio-istiod
       namespace: istio-system
+    - name: keycloak
+      namespace: openmfp-system
   values:
     http:
       protocol: http
     image:
-      pullSecret: ghcr-credentials # TODO: temporary as long as the repo is private
+      pullSecret: ghcr-credentials
     istio:
       enabled: false
     externalSecrets:
@@ -24,8 +26,8 @@ spec:
     trust:
       openmfp:
         baseDomains: "localhost"
-        authDomain: http://localhost:8080/keycloak/realms/master/protocol/openid-connect
-        tokenUrl: http://keycloak:8080/keycloak/realms/master/protocol/openid-connect/token
+        authDomain: http://localhost:8080/keycloak/realms/master/protocol/openid-connect/auth
+        tokenUrl: http://keycloak/keycloak/realms/master/protocol/openid-connect/token
         oidcClientSecretName: openmfp-client
         loginAudience: openmfp
     frontendPort: 8080
