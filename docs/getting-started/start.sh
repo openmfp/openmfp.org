@@ -26,7 +26,7 @@ echo "creating secret for ghcr.io"
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN
 
 echo "creating secret for keycloak"
-kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin
+kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin --dry-run=client -o yaml | kubectl apply -f -
 set -x
 
 kubectl apply -k ./
