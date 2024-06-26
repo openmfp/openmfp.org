@@ -12,8 +12,6 @@ spec:
   dependsOn:
     - name: istio-istiod
       namespace: istio-system
-    - name: keycloak
-      namespace: openmfp-system
   values:
     http:
       protocol: http
