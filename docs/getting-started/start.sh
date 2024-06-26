@@ -9,18 +9,17 @@ fi
 
 # Check if kind cluster kind is already running, exit if yes
 if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
-    echo "Kind cluster already running"
-    exit 1
+    echo "Kind cluster already running, using existing"
+    kind export kubeconfig --name openmfp
+else
+  kind create cluster --config kind-config.yaml --name openmfp
 fi
-
-# Create kind cluster
-kind create cluster --config kind-config.yaml --name openmfp
 
 # Install flux
 flux install --components source-controller,helm-controller
 
 # Prepare installation namespace
-kubectl create ns openmfp-system
+kubectl apply -k ./infrastructure/namespace
 
 set +x
 echo "creating secret for ghcr.io"

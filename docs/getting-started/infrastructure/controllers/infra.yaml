@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: infra
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  url: oci://ghcr.io/openmfp/infra/helm/infra
+  ref:
+    semver: "*"
+  secretRef:
+    name: ghcr-credentials
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: infra
+  namespace: openmfp-system
+spec:
+  interval: 1m
+  chartRef:
+    kind: OCIRepository
+    name: infra
+  releaseName: infra
+  dependsOn:
+    - name: istio-istiod
+      namespace: istio-system
+

@@ -19,10 +19,11 @@ spec:
       protocol: http
     image:
       pullSecret: ghcr-credentials
-    istio:
-      enabled: false
     externalSecrets:
       enabled: false
+    baseDomains:
+      - "localhost"
+    cookieDomain: "localhost"
     trust:
       openmfp:
         baseDomains: "localhost"
@@ -31,3 +32,7 @@ spec:
         oidcClientSecretName: openmfp-client
         loginAudience: openmfp
     frontendPort: 8080
+    istio:
+      virtualService:
+        hosts:
+          - "*"

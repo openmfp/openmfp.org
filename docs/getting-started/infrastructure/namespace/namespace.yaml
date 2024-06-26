@@ -3,5 +3,4 @@ kind: Namespace
 metadata:
   name: openmfp-system
   labels:
-    toolkit.fluxcd.io/tenant: dev-team
     istio-injection: enabled
