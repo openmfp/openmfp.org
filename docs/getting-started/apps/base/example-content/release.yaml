@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: example-content
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: example-content
+  releaseName: example-content
+  dependsOn:
+    - name: istio-istiod
+      namespace: istio-system

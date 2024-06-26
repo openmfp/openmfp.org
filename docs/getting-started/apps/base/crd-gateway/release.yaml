@@ -18,6 +18,7 @@ spec:
     requestAuthentication:
       jwtRules:
         - audiences:
-            - master-realm
+            - account
           forwardOriginalToken: true
           issuer: http://localhost:8080/keycloak/realms/master
+          jwksUri: http://keycloak.openmfp-system.svc.cluster.local/keycloak/realms/master/protocol/openid-connect/certs
