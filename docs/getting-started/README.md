@@ -44,8 +44,14 @@ The `start.sh` contains all steps needed to bootstrap the local environment. The
 - prepare secrets
 - apply flux deployment configuration
 
+For minimal footprint and UI only you can run
 ```sh
-sh ./start.sh 
+sh ./start.sh min
+```
+
+For all openmfp components currently integrated you can run
+```sh
+sh ./start.sh all
 ```
 
 Once the process is completed you can access the environment using http://localhost:8000
