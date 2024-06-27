@@ -1,0 +1,25 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: example-resources
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  url: oci://ghcr.io/openmfp/example-content/helm/example-resources
+  ref:
+    semver: "*"
+  secretRef:
+    name: ghcr-credentials
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: example-resources
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: example-resources
+  releaseName: example-resources

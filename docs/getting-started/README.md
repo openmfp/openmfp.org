@@ -48,4 +48,4 @@ The `start.sh` contains all steps needed to bootstrap the local environment. The
 sh ./start.sh 
 ```
 
-Once the process is completed you can access the environment using http://localhost:8080
+Once the process is completed you can access the environment using http://localhost:8000

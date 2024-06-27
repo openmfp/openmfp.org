@@ -25,11 +25,11 @@ spec:
     trust:
       openmfp:
         baseDomains: "localhost"
-        authDomain: http://localhost:8080/keycloak/realms/master/protocol/openid-connect/auth
+        authDomain: http://localhost:8000/keycloak/realms/master/protocol/openid-connect/auth
         tokenUrl: http://keycloak/keycloak/realms/master/protocol/openid-connect/token
         oidcClientSecretName: openmfp-client
         loginAudience: openmfp
-    frontendPort: 8080
+    frontendPort: 8000
     istio:
       virtualService:
         hosts:

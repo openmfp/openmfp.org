@@ -2,11 +2,6 @@
 set -e
 COL='\033[92m'
 COL_RES='\033[0m'
-# argument to select the installation flavor, options are all or min, verify if the argument was provided
-if [ "${1}" != "all" ] && [ "${1}" != "min" ]; then
-    echo "Invalid installation flavor provided, please provide either all (start.sh all) or min (start.sh min)"
-    exit 1
-fi
 
 # Check for input argument GH_TOKEN and echo message in case not provided
 if [ -z "${GH_TOKEN}" ]; then
@@ -38,9 +33,5 @@ flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --userna
 
 echo "$COL creating secret for keycloak $COL_RES"
 kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin --dry-run=client -o yaml | kubectl apply -f -
-
-
-echo "$COL starting deployments $COL_RES"
-kubectl apply -k ./flavors/local-${1}
 
 

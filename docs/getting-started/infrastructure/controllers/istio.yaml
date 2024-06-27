@@ -72,7 +72,7 @@ spec:
         type: NodePort
         ports:
           - name: http2
-            port: 8080
+            port: 8000
             nodePort: 30000
           - name: https
             port: 8443

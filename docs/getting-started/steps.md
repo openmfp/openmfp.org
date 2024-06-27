@@ -1,6 +1,6 @@
 1. (Temporary Credentials required) Export your PAT `export GH_TOKEN=<YOURPAT>`
 1. run `./start.sh`
-1. Access portal using `http://localhost:8080`
+1. Access portal using `http://localhost:8000`
 
 # TODO
 

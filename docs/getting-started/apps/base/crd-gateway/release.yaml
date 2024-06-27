@@ -20,5 +20,5 @@ spec:
         - audiences:
             - account
           forwardOriginalToken: true
-          issuer: http://localhost:8080/keycloak/realms/master
+          issuer: http://localhost:8000/keycloak/realms/master
           jwksUri: http://keycloak.openmfp-system.svc.cluster.local/keycloak/realms/master/protocol/openid-connect/certs
