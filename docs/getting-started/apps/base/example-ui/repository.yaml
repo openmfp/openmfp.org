@@ -1,11 +1,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
-  name: example-content
+  name: example-ui
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/example-content/helm/example-content
+  url: oci://ghcr.io/openmfp/example-content/helm/example-ui
   ref:
     semver: "*"
   secretRef:

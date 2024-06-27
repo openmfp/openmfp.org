@@ -6,5 +6,6 @@ resources:
   - ../base/extension-content-operator
   - ../base/portal
   - ../base/crd-gateway
-#  - ../base/example-content
+  - ../base/example-ui
+  - ../base/example-resources
   - ../base/openfga
