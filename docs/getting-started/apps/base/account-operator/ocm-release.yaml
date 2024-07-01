@@ -7,11 +7,11 @@ spec:
   interval: 10m0s
   component: github.com/openmfp/account-operator
   repository:
-    url: ghcr.io/openmfp/ocm
+    url: ghcr.io/openmfp/account-operator/ocm
     secretRef:
         name: ghcr-credentials
   version:
-    semver: "0.31.0"
+    semver: 0.41.0
 ---
 apiVersion: delivery.ocm.software/v1alpha1
 kind: Resource
@@ -27,26 +27,9 @@ spec:
     namespace: openmfp-system
     resourceRef:
       name: chart
-      version: 0.31.0
+      version: 0.41.0
       extraIdentity:
         helmChart: account-operator
----
-apiVersion: delivery.ocm.software/v1alpha1
-kind: Resource
-metadata:
-  name: account-operator-image
-  namespace: openmfp-system
-spec:
-  interval: 10s
-  sourceRef:
-    apiVersion: delivery.ocm.software/v1alpha1
-    kind: ComponentVersion
-    name: account-operator
-    namespace: openmfp-system
-    resourceRef:
-      name: image
-      version: 0.31.0
-
 ---
 apiVersion: delivery.ocm.software/v1alpha1
 kind: FluxDeployer
@@ -63,4 +46,6 @@ spec:
     interval: 10s
     releaseName: account-operator
     targetNamespace: openmfp-system
+    values:
+      a: b
 
