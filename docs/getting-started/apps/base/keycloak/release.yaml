@@ -18,6 +18,12 @@ spec:
         adminUser: keycloak-admin
         existingSecret: keycloak-admin
         passwordSecretKey: secret
+      resourcesPreset: none
+      postgresql:
+        primary:
+          resourcesPreset: none
+          persistence:
+            enabled: false
     keycloakConfig:
       url: http://keycloak.openmfp-system.svc.cluster.local/keycloak
       redirectUrls: [ "http://localhost/callback*" ]
