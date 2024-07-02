@@ -1,0 +1,9 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: example-resources
+  namespace: openmfp-system
+spec:
+  values:
+    accounts:
+      enabled: true

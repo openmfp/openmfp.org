@@ -9,3 +9,5 @@ resources:
   - ../../apps/base/crd-gateway
   - ../../apps/base/example-content
   - ../../apps/base/openfga
+patchesStrategicMerge:
+  - enableAccounts.yaml

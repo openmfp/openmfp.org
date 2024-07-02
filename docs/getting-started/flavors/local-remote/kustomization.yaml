@@ -6,3 +6,5 @@ resources:
   - ../../apps/base/extension-content-operator
   - ../../apps/base/portal
   - ../../apps/base/example-content
+patchesStrategicMerge:
+  - enableAccounts.yaml
