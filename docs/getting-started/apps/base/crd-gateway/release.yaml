@@ -15,10 +15,10 @@ spec:
     virtualService:
       hosts:
         - "*"
-    requestAuthentication:
-      jwtRules:
-        - audiences:
-            - openmfp
-          forwardOriginalToken: true
-          issuer: http://localhost:8000/keycloak/realms/master
-          jwksUri: http://keycloak.openmfp-system.svc.cluster.local/keycloak/realms/master/protocol/openid-connect/certs
+    trust:
+      openmfp:
+        authUrl: http://keycloak.openmfp-system.svc.cluster.local/keycloak/realms/master/protocol/openid-connect/auth
+        audience: openmfp
+        trustedIssuer: http://localhost:8000/keycloak/realms/master
+        jwksUrl: http://keycloak.openmfp-system.svc.cluster.local/keycloak/realms/master/protocol/openid-connect/certs
+
