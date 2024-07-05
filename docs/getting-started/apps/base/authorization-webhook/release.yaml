@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authorization-webhook
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: authorization-webhook
+  releaseName: authorization-webhook
+  values:
+    imagePullSecrets: ghcr-credentials
+    openfga:
+      url: openfga:8081
+      storeName: test
+    extraVolumeMounts:
+    - name: rules-config
+      mountPath: /var/data/rules
+    extraVolumes:
+    - name: rules-config
+      configMap:
+        name: webhook-rules
+
+    extraEnvs:
+    - name: WEBHOOK_AUDIENCE
+      value: foo
+    useInClusterClient: true

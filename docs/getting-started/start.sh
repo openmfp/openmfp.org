@@ -20,6 +20,9 @@ if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
     kind export kubeconfig --name openmfp
 else
   echo -e "$COL Creating kind cluster $COL_RES"
+  cd ./webhook-config
+  ./gen-certs.sh
+  cd ..
   kind create cluster --config kind-config.yaml --name openmfp
 fi
 
@@ -32,6 +35,7 @@ echo "$COL Creating openmfp-system namespace $COL_RES"
 kubectl apply -k ./infrastructure/namespace
 
 echo "$COL Creating necessary secrets $COL_RES"
+kubectl create secret tls ora-iam-authorization-webhook -n openmfp-system --key ./webhook-config/tls.key --cert ./webhook-config/tls.crt
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN
 kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin --dry-run=client -o yaml | kubectl apply -f -
 

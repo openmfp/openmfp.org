@@ -33,6 +33,10 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
     ```sh
     brew install fluxcd/tap/flux
     ```
+- yq: [Install the yq CLI](https://github.com/mikefarah/yq?tab=readme-ov-file#install) on macOS or Linux using Homebrew:
+    ```sh
+    brew install yq
+    ```
 
 ## Repository structure
 
