@@ -14,6 +14,11 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
 
 ## Prerequisites
 
+- GitHub CLI: In order to interact with Github via CLI: [Github CLI]([https://kind.sigs.k8s.io/docs/user/quick-start/](https://cli.github.com/))
+  On macOS or Linux using Homebrew:
+  ```sh
+  brew install gh
+  ```
 - Kind: In order to have a local kubernetes cluster you can use kind. Kind Installation: [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/)
   On macOS or Linux using Homebrew:
   ```sh
