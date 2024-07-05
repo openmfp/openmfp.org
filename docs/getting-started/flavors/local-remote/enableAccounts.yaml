@@ -7,3 +7,6 @@ spec:
   values:
     accounts:
       enabled: true
+    contentConfigurations:
+      home: true
+      accounts: true
