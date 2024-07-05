@@ -4,7 +4,9 @@ resources:
   - ../../infrastructure/controllers
   - ../../apps/base/account-operator
   - ../../apps/base/extension-content-operator
+  - ../../apps/base/crd-gateway
   - ../../apps/base/portal
   - ../../apps/base/example-content
 patchesStrategicMerge:
   - enableAccounts.yaml
+  - patchCrdGateway.yaml
