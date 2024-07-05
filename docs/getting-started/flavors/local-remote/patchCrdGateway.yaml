@@ -11,3 +11,5 @@ spec:
         allowedUsers: "*"
         oidcClient: openmfp
         trustedIssuer: https://auth.d1.openmfp.dxp.k8s.ondemand.com/realms/master
+        jwksUrl: https://auth.d1.openmfp.dxp.k8s.ondemand.com/realms/master/protocol/openid-connect/certs
+
