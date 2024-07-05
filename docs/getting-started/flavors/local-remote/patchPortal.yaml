@@ -1,0 +1,14 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: portal
+  namespace: openmfp-system
+spec:
+  values:
+    trust:
+      openmfp:
+        baseDomains: "localhost"
+        authDomain: https://auth.d1.openmfp.dxp.k8s.ondemand.com/realms/master/protocol/openid-connect/auth
+        tokenUrl: https://auth.d1.openmfp.dxp.k8s.ondemand.com/realms/master/protocol/openid-connect/token
+        oidcClientSecretName: openmfp-client
+        loginAudience: openmfp
