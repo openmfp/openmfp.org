@@ -10,3 +10,4 @@ resources:
 patchesStrategicMerge:
   - enableAccounts.yaml
   - patchCrdGateway.yaml
+  - patchPortal.yaml
