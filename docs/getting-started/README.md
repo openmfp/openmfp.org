@@ -33,10 +33,6 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
     ```sh
     brew install fluxcd/tap/flux
     ```
-- yq: [Install the yq CLI](https://github.com/mikefarah/yq?tab=readme-ov-file#install) on macOS or Linux using Homebrew:
-    ```sh
-    brew install yq
-    ```
 
 ## Repository structure
 
@@ -47,7 +43,7 @@ The Git repository contains the following top directories:
 
 ## Bootstrap local environment
 
-The `start.sh` contains all steps needed to bootstrap the local environment. The script will automate the following steps:
+The `scripts/start.sh` contains all steps needed to bootstrap the local environment. The script will automate the following steps:
 - Create kind cluster called `openmfp`
 - install flux
 - prepare secrets
@@ -55,12 +51,12 @@ The `start.sh` contains all steps needed to bootstrap the local environment. The
 
 For minimal footprint and UI only you can run
 ```sh
-sh ./start.sh min
+sh ./scripts/start.sh min
 ```
 
 For all openmfp components currently integrated you can run
 ```sh
-sh ./start.sh all
+sh ./scripts/start.sh all
 ```
 
 Once the process is completed you can access the environment using http://localhost:8000

@@ -2,6 +2,11 @@
 set -e
 COL='\033[92m'
 COL_RES='\033[0m'
+# argument to select the installation flavor, options are all or min, verify if the argument was provided
+if [ "${1}" != "all" ] && [ "${1}" != "min" ] && [ "${1}" != "remote" ]; then
+    echo "Invalid installation flavor provided, please provide either all (start.sh all) or min (start.sh min)"
+    exit 1
+fi
 
 # Check for input argument GH_TOKEN and echo message in case not provided
 if [ -z "${GH_TOKEN}" ]; then
@@ -15,23 +20,27 @@ if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
     kind export kubeconfig --name openmfp
 else
   echo -e "$COL Creating kind cluster $COL_RES"
+  cd ../webhook-config
+  ./gen-certs.sh
+  cd ../scripts
   kind create cluster --config kind-config.yaml --name openmfp
-    echo -e "$COL Creating kind cluster. Complete $COL_RES"
 fi
 
 # Install flux
 echo "$COL Installing flux $COL_RES"
 flux install --components source-controller,helm-controller
-echo "$COL Installing flux. Complete $COL_RES"
 
 # Prepare installation namespace
 echo "$COL Creating openmfp-system namespace $COL_RES"
-kubectl apply -k ./infrastructure/namespace
+kubectl apply -k ../infrastructure/namespace
 
-echo "$COL creating secret for ghcr.io $COL_RES"
+echo "$COL Creating necessary secrets $COL_RES"
+kubectl create secret tls ora-iam-authorization-webhook -n openmfp-system --key ../webhook-config/tls.key --cert ../webhook-config/tls.crt
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN
-
-echo "$COL creating secret for keycloak $COL_RES"
 kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin --dry-run=client -o yaml | kubectl apply -f -
+
+
+echo "$COL starting deployments $COL_RES"
+kubectl apply -k ./flavors/local-${1}
 
 
