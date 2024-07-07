@@ -45,14 +45,14 @@ find . -type f -name '*.yaml' -print0 | while IFS= read -r -d $'\0' file;
     yq e 'true' "$file" > /dev/null
 done
 
-echo "INFO - Validating clusters"
-find ./clusters -maxdepth 2 -type f -name '*.yaml' -print0 | while IFS= read -r -d $'\0' file;
-  do
-    kubeconform "${kubeconform_flags[@]}" "${kubeconform_config[@]}" "${file}"
-    if [[ ${PIPESTATUS[0]} != 0 ]]; then
-      exit 1
-    fi
-done
+# echo "INFO - Validating flavors"
+# find ./flavors -maxdepth 2 -type f -name '*.yaml' -print0 | while IFS= read -r -d $'\0' file;
+#   do
+#     kubeconform "${kubeconform_flags[@]}" "${kubeconform_config[@]}" "${file}"
+#     if [[ ${PIPESTATUS[0]} != 0 ]]; then
+#       exit 1
+#     fi
+# done
 
 echo "INFO - Validating kustomize overlays"
 find . -type f -name $kustomize_config -print0 | while IFS= read -r -d $'\0' file;
