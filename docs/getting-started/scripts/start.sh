@@ -20,12 +20,13 @@ if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
     kind export kubeconfig --name openmfp
 else
   echo -e "$COL Creating kind cluster $COL_RES"
-  cd ./webhook-config
-  ./gen-certs.sh
-  cd ../scripts
   if [ "${1}" == "remote" ]; then
+    cd ./scripts
     kind create cluster --config ../kind/remote-config.yaml --name openmfp
   else
+    cd ./webhook-config
+    ./gen-certs.sh
+    cd ../scripts
     kind create cluster --config ../kind/webhook-config.yaml --name openmfp
   fi
 fi
