@@ -23,7 +23,11 @@ else
   cd ./webhook-config
   ./gen-certs.sh
   cd ../scripts
-  kind create cluster --config ../kind-config.yaml --name openmfp
+  if [ "${1}" == "remote" ]; then
+    kind create cluster --config ../kind/remote-config.yaml --name openmfp
+  else
+    kind create cluster --config ../kind/webhook-config.yaml --name openmfp
+  fi
 fi
 
 # Install flux
@@ -35,7 +39,9 @@ echo "$COL Creating openmfp-system namespace $COL_RES"
 kubectl apply -k ../infrastructure/namespace
 
 echo "$COL Creating necessary secrets $COL_RES"
-kubectl create secret tls ora-iam-authorization-webhook -n openmfp-system --key ../webhook-config/tls.key --cert ../webhook-config/tls.crt
+if [ "${1}" != "remote" ]; then
+    kubectl create secret tls ora-iam-authorization-webhook -n openmfp-system --key ../webhook-config/tls.key --cert ../webhook-config/tls.crt
+fi
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN
 kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin --dry-run=client -o yaml | kubectl apply -f -
 
