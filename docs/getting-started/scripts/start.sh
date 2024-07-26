@@ -20,10 +20,10 @@ if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
     kind export kubeconfig --name openmfp
 else
   echo -e "$COL Creating kind cluster $COL_RES"
-  cd ../webhook-config
+  cd ./webhook-config
   ./gen-certs.sh
   cd ../scripts
-  kind create cluster --config kind-config.yaml --name openmfp
+  kind create cluster --config ../kind-config.yaml --name openmfp
 fi
 
 # Install flux
@@ -41,6 +41,6 @@ kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=se
 
 
 echo "$COL starting deployments $COL_RES"
-kubectl apply -k ./flavors/local-${1}
+kubectl apply -k ../flavors/local-${1}
 
 
