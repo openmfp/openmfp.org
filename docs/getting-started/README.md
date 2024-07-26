@@ -60,3 +60,31 @@ sh ./scripts/start.sh all
 ```
 
 Once the process is completed you can access the environment using http://localhost:8000
+
+
+## Bootstrap remote environment
+
+This flavor is meant to reuse many components from a already running openmfp environment. This is particularly useful 
+for local development of micro frontend applications. After running the installation script using:
+```sh
+sh ./start.sh remote
+```
+
+You need to configure the keycloak client secret that the portal running ont he kind cluster should use
+```sh
+CLIENT_ID=$(echo "<CLIENT>" | base64)
+CLIENT_SECRET=$(echo "<SECRET>" | base64)
+
+echo "
+apiVersion: v1
+data:
+  id: $CLIENT_ID
+  secret: $CLIENT_SECRET
+kind: Secret
+metadata:
+  name: portal-client-secret-openmfp
+  namespace: openmfp-system
+type: Opaque
+" | kubectl apply -f -
+
+```
