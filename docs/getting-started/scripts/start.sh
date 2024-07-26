@@ -1,4 +1,7 @@
 #!/bin/sh
+
+pushd $(dirname $0)
+
 set -e
 COL='\033[92m'
 COL_RES='\033[0m'
@@ -21,12 +24,9 @@ if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
 else
   echo -e "$COL Creating kind cluster $COL_RES"
   if [ "${1}" == "remote" ]; then
-    cd ./scripts
     kind create cluster --config ../kind/remote-config.yaml --name openmfp
   else
-    cd ./webhook-config
-    ./gen-certs.sh
-    cd ../scripts
+    ../webhook-config/gen-certs.sh
     kind create cluster --config ../kind/webhook-config.yaml --name openmfp
   fi
 fi
@@ -50,4 +50,4 @@ kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=se
 echo "$COL starting deployments $COL_RES"
 kubectl apply -k ../flavors/local-${1}
 
-
+popd

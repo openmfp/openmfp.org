@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pushd $(dirname $0)
+
 openssl genrsa -out ca.key 2048
 
 openssl req -new -x509 -days 365 -key ca.key \
@@ -19,3 +21,5 @@ openssl x509 -req \
   -out tls.crt
 
 rm *.csr
+
+popd
