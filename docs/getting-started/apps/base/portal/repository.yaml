@@ -7,6 +7,6 @@ spec:
   interval: 5m
   url: oci://ghcr.io/openmfp/portal/helm/portal
   ref:
-    semver: "0.66.0"
-  secretRef: # TODO: temporary as long as the repo is private
+    semver: 0.69.0
+  secretRef:
     name: ghcr-credentials

@@ -29,7 +29,7 @@ nodes:
     protocol: TCP
     listenAddress: "127.0.0.1"
   extraMounts:
-  - hostPath: ../webhook-config
+  - hostPath: webhook-config
     containerPath: /config
     readOnly: true
     selinuxRelabel: true

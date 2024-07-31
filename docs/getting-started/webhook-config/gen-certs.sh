@@ -1,25 +1,21 @@
 #!/bin/bash
 
-pushd $(dirname $0)
+openssl genrsa -out webhook-config/ca.key 2048
 
-openssl genrsa -out ca.key 2048
-
-openssl req -new -x509 -days 365 -key ca.key \
+openssl req -new -x509 -days 365 -key webhook-config/ca.key \
   -subj "/C=DE/CN=authz-server"\
-  -out ca.crt
+  -out webhook-config/ca.crt
 
-openssl req -newkey rsa:2048 -nodes -keyout tls.key \
+openssl req -newkey rsa:2048 -nodes -keyout webhook-config/tls.key \
   -subj "/C=DE/CN=authz-server" \
-  -out tls.csr
+  -out webhook-config/tls.csr
 
   # -extfile <(printf "subjectAltName=DNS:host.containers.internal") \
 openssl x509 -req \
   -days 365 \
   -extfile <(printf "subjectAltName=DNS:authorization-webhook") \
-  -in tls.csr \
-  -CA ca.crt -CAkey ca.key -CAcreateserial \
-  -out tls.crt
+  -in webhook-config/tls.csr \
+  -CA webhook-config/ca.crt -CAkey webhook-config/ca.key -CAcreateserial \
+  -out webhook-config/tls.crt
 
-rm *.csr
-
-popd
+rm webhook-config/*.csr

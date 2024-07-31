@@ -22,6 +22,7 @@ spec:
     baseDomains:
       - "localhost"
     cookieDomain: "localhost"
+    crdGatewayApiUrl: "http://localhost:8000/example-gateway/graphql"
     trust:
       openmfp:
         baseDomains: "localhost"

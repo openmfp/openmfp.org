@@ -51,12 +51,12 @@ The `scripts/start.sh` contains all steps needed to bootstrap the local environm
 
 For minimal footprint and UI only you can run
 ```sh
-sh ./scripts/start.sh min
+./scripts/start.sh min
 ```
 
 For all openmfp components currently integrated you can run
 ```sh
-sh ./scripts/start.sh all
+./scripts/start.sh all
 ```
 
 Once the process is completed you can access the environment using http://localhost:8000

@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: account-ui
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  chartRef:
+    kind: OCIRepository
+    name: account-ui
+  releaseName: account-ui
+  values:
+    image:
+      pullSecret: ghcr-credentials
+    baseUrl: http://localhost:8000/uis/accounts-ui
+    istio:
+      virtualService:
+        hosts: ["*"]
+        matcher:
+          match:
+            - uri:
+                exact: /uis/accounts-ui
+            - uri:
+                prefix: /uis/accounts-ui/

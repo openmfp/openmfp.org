@@ -9,5 +9,3 @@ spec:
     kind: OCIRepository
     name: account-operator
   releaseName: account-operator
-  values:
-    imagePullSecrets: ""
