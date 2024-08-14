@@ -14,6 +14,7 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
 
 ## Prerequisites
 
+- [Docker](https://www.docker.com) or [podman](https://podman.io): install either docker or podman in order to run the kind cluster
 - GitHub CLI: In order to interact with Github via CLI: [Github CLI]([https://kind.sigs.k8s.io/docs/user/quick-start/](https://cli.github.com/))
   On macOS or Linux using Homebrew:
   ```sh
