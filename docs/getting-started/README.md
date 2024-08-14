@@ -15,6 +15,10 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
 ## Prerequisites
 
 - [Docker](https://www.docker.com) or [podman](https://podman.io): install either docker or podman in order to run the kind cluster
+- [jq](https://jqlang.github.io/jq/): install for example using Homebrew:
+  ```sh
+  brew install jq
+  ```
 - GitHub CLI: In order to interact with Github via CLI: [Github CLI]([https://kind.sigs.k8s.io/docs/user/quick-start/](https://cli.github.com/))
   On macOS or Linux using Homebrew:
   ```sh
@@ -26,7 +30,7 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
   brew install kind
   ```
 - Github Token: You'll need a GitHub account and a [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). that can create repositories (minimum permissions `read:packages`).
-  ```shell
+  ```sh
   export GH_TOKEN=<YOUR TOKEN>
   ```
   This step is only needed temporarily until all packages are available open source
