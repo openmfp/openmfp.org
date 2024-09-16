@@ -24,6 +24,7 @@ spec:
           resourcesPreset: none
           persistence:
             enabled: false
+        auth: {}
     keycloakConfig:
       url: http://keycloak.openmfp-system.svc.cluster.local/keycloak
       redirectUrls: [ "http://localhost/callback*" ]
