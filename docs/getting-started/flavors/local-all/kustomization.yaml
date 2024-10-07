@@ -3,15 +3,7 @@ kind: Kustomization
 
 resources:
 - ../../infrastructure/controllers
-- ../../apps/base/authorization-webhook
-- ../../apps/base/keycloak
-- ../../apps/base/account-operator
-- ../../apps/base/account-ui
-- ../../apps/base/extension-content-operator
-- ../../apps/base/portal
-- ../../apps/base/crd-gateway
-- ../../apps/base/example-content
-- ../../apps/base/openfga
+# - ../../apps/base/authorization-webhook
+# - ../../apps/base/account-ui
+- ../../apps/base/openmfp
 
-patches:
-- path: enableAccounts.yaml

@@ -21,7 +21,7 @@ if [ $(kind get clusters | grep -c openmfp) -gt 0 ]; then
     kind export kubeconfig --name openmfp
 else
   echo -e "$COL Creating kind cluster $COL_RES"
-  if [ "${1}" == "remote" ]; then
+  if [ "${1}" = "remote" ]; then
     kind create cluster --config kind/remote-config.yaml --name openmfp --image=kindest/node:v1.30.2
   else
     webhook-config/gen-certs.sh
@@ -43,6 +43,7 @@ if [ "${1}" != "remote" ]; then
 fi
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN
 kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin --dry-run=client -o yaml | kubectl apply -f -
+kubectl create secret generic postgres-admin-password -n openmfp-system --from-literal=password=admin --dry-run=client -o yaml | kubectl apply -f -
 
 
 echo "$COL starting deployments $COL_RES"
