@@ -5,7 +5,7 @@ metadata:
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/extension-content-operator/helm/extension-content-operator
+  url: oci://ghcr.io/openmfp/helm-charts/extension-content-operator
   ref:
     semver: "*"
   secretRef:

@@ -5,7 +5,7 @@ metadata:
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/infra/helm/infra
+  url: oci://ghcr.io/openmfp/helm-charts/infra
   ref:
     semver: "*"
   secretRef:
