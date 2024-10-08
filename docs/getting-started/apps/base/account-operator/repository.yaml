@@ -5,6 +5,8 @@ metadata:
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/account-operator/helm/account-operator
+  url: oci://ghcr.io/openmfp/helm-charts/account-operator
   ref:
     semver: "*"
+  secretRef:
+    name: ghcr-credentials
