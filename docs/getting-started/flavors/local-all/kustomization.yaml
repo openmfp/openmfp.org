@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - ../../infrastructure/controllers
+- ../../apps/base/crds
 # - ../../apps/base/authorization-webhook
 # - ../../apps/base/account-ui
 - ../../apps/base/openmfp

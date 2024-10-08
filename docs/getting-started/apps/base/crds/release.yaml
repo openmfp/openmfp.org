@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: extension-content-operator-crds
+  namespace: openmfp-system
+spec:
+  interval: 15m
+  timeout: 10m
+  chart:
+    spec:
+      chart: extension-content-operator-crds
+      sourceRef:
+        kind: HelmRepository
+        name: openmfp-crds
+      version: "*"
+  releaseName: extension-content-operator-crds
