@@ -18,6 +18,8 @@ spec:
     openmfp:
       openfga:
         openfga:
+          datastore:
+            waitForMigrations: true
           migrate:
             annotations:
               sidecar.istio.io/inject: "false"
