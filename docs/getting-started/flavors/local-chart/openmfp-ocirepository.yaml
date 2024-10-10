@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: openmfp
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  url: oci://ghcr.io/openmfp/helm-charts/openmfp
+  ref:
+    semver: "*"
+  secretRef:
+    name: ghcr-credentials

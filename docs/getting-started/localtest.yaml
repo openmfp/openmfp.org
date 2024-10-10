@@ -1,0 +1,32 @@
+apiVersion: core.openmfp.io/v1alpha1
+kind: ContentConfiguration
+metadata:
+  name: accounts
+  namespace: openmfp-system
+spec:
+  inlineConfiguration:
+    content: |2-
+      {
+        "name": "accounts",
+        "luigiConfigFragment": [
+          {
+            "data": {
+              "nodeDefaults": {
+                "entityType": "main"
+              },
+              "nodes": [
+                {
+                  "pathSegment": "accounts",
+                  "label": "Accounts",
+                  "icon": "folder",
+                  "loadingIndicator": {
+                    "enabled": false
+                  },
+                  "url": "http://localhost:4200/account-list"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    contentType: json

@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chartRef:
     kind: OCIRepository
-    name: account-ui
+    name: openmfp
   releaseName: account-ui
   values:
     image:

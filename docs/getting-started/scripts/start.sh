@@ -4,7 +4,7 @@ set -e
 COL='\033[92m'
 COL_RES='\033[0m'
 # argument to select the installation flavor, options are all or min, verify if the argument was provided
-if [ "${1}" != "all" ] && [ "${1}" != "min" ] && [ "${1}" != "remote" ]; then
+if [ "${1}" != "all" ] && [ "${1}" != "min" ] && [ "${1}" != "remote" ] && [ "${1}" != "chart" ]; then
     echo "Invalid installation flavor provided, please provide either all (start.sh all) or min (start.sh min)"
     exit 1
 fi
@@ -36,14 +36,14 @@ flux install --components source-controller,helm-controller
 # Prepare installation namespace
 echo "$COL Creating openmfp-system namespace $COL_RES"
 kubectl apply -k infrastructure/namespace
-
+#
 echo "$COL Creating necessary secrets $COL_RES"
 if [ "${1}" != "remote" ]; then
     kubectl create secret tls ora-iam-authorization-webhook -n openmfp-system --key webhook-config/tls.key --cert webhook-config/tls.crt --dry-run=client -o yaml | kubectl apply -f -
 fi
 flux create secret oci ghcr-credentials -n openmfp-system --url ghcr.io --username $(gh api user | jq -r '.login') --password $GH_TOKEN
 kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=secret=admin --dry-run=client -o yaml | kubectl apply -f -
-
-
-echo "$COL starting deployments $COL_RES"
+#
+#
+#echo "$COL starting deployments $COL_RES"
 kubectl apply -k flavors/local-${1}

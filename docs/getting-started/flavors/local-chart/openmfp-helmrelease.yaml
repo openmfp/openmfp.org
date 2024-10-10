@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: openmfp
+  namespace: openmfp-system
+spec:
+  interval: 1m
+  install:
+    timeout: 1m
+  upgrade:
+    timeout: 1m
+  chartRef:
+    kind: OCIRepository
+    name: openmfp
+  releaseName: openmfp
+  values:
+    components:
+      infra:
+        enabled: true
+      portal:
+        enabled: false
+      openfga:
+        enabled: false
+      example-ui:
+        enabled: false
+      example-crd-gateway:
+        enabled: true
+    openfga:
+      openfga:
+        datastore:
+          waitForMigrations: false
+
