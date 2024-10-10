@@ -47,3 +47,8 @@ kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=se
 
 echo "$COL starting deployments $COL_RES"
 kubectl apply -k flavors/local-${1}
+
+if [ "${1}" == "kcp" ]; then
+    # apply Istio resources that can't be applied as part of kustomize (Istio CRDs aren't there yet)
+    sleep 5 && kubectl apply -f apps/base/kcp/istio.yaml
+fi

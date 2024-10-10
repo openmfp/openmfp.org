@@ -27,6 +27,9 @@ spec:
         # this is necessary to allow the istio sidecar to use client certs
         - 127.0.0.6
     kcp:
+      tokenAuth:
+        # enables static tokens, see https://github.com/kcp-dev/helm-charts/blob/main/charts/kcp/values.yaml#L75 for them.
+        enabled: true
       hostAliases:
         enabled: true
         values:
