@@ -7,6 +7,7 @@ spec:
   interval: 1m
   install:
     timeout: 5m
+    disableWait: true
   upgrade:
     timeout: 5m
   chartRef:
