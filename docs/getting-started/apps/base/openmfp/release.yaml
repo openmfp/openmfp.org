@@ -4,35 +4,35 @@ metadata:
   name: openmfp
   namespace: openmfp-system
 spec:
-  interval: 15m
-  timeout: 10m
-  chart:
-    spec:
-      chart: openmfp
-      sourceRef:
-        kind: HelmRepository
-        name: openmfp
-      version: "*"
+  interval: 10m
+  install:
+    timeout: 10m
+    disableWait: true
+  upgrade:
+    timeout: 10m
+  chartRef:
+    kind: OCIRepository
+    name: openmfp
   releaseName: openmfp
   values:
-    openmfp:
+    account-operator:
+      crds:
+        enabled: true
+    extension-content-operator:
+      crds:
+        enabled: false
+    components:
+      example-resources:
+        enabled: false
+      infra:
+        enabled: true
+    openfga:
       openfga:
-        openfga:
-          datastore:
-            waitForMigrations: true
-          migrate:
-            annotations:
-              sidecar.istio.io/inject: "false"
-              helm.sh/hook: "post-install, post-upgrade, post-rollback, post-delete"
-              helm.sh/hook-weight: "-5"
-              helm.sh/hook-delete-policy: "before-hook-creation"
-      extension-content-operator:
-        crds:
-          false
-  install:
-    disableWait: true
-    remediation: 
-      retries: 3
-  upgrade:
-    disableWait: true
-
+        datastore:
+          waitForMigrations: true
+        migrate:
+          annotations:
+            sidecar.istio.io/inject: "false"
+            helm.sh/hook: "post-install, post-upgrade, post-rollback, post-delete"
+            helm.sh/hook-weight: "-5"
+            helm.sh/hook-delete-policy: "before-hook-creation"
