@@ -7,7 +7,6 @@ spec:
   interval: 10m
   install:
     timeout: 10m
-    disableWait: true
   upgrade:
     timeout: 10m
   chartRef:
@@ -17,7 +16,7 @@ spec:
   values:
     account-operator:
       crds:
-        enabled: true
+        enabled: false
     extension-content-operator:
       crds:
         enabled: false
@@ -30,9 +29,3 @@ spec:
       openfga:
         datastore:
           waitForMigrations: true
-        migrate:
-          annotations:
-            sidecar.istio.io/inject: "false"
-            helm.sh/hook: "post-install, post-upgrade, post-rollback, post-delete"
-            helm.sh/hook-weight: "-5"
-            helm.sh/hook-delete-policy: "before-hook-creation"
