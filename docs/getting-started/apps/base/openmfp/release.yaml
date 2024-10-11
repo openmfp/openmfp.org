@@ -31,6 +31,8 @@ spec:
           false
   install:
     disableWait: true
+    remediation: 
+      retries: 3
   upgrade:
     disableWait: true
 
