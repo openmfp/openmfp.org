@@ -21,20 +21,24 @@ spec:
     - name:  extension-content-operator-crds
       namespace: openmfp-system
   values:
-    keycloak:
-      job:
-        annotations:
-          helm.sh/hook: null
-          helm.sh/hook-weight: null
-          helm.sh/hook-delete-policy: null
+    components:
+      example-resources:
+        enabled: false
     account-operator:
       crds:
         enabled: false
     extension-content-operator:
       crds:
         enabled: false
-    components:
-      example-resources:
-        enabled: false
+    keycloak:
+      job:
+        annotations:
+          helm.sh/hook: null
+          helm.sh/hook-weight: null
+          helm.sh/hook-delete-policy: null
+    openfga:
+      openfga:
+        datastore:
+          waitForMigrations: true
 
 
