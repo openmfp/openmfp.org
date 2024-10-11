@@ -6,27 +6,35 @@ metadata:
 spec:
   interval: 1m
   install:
-    timeout: 1m
+    timeout: 5m
   upgrade:
-    timeout: 1m
+    timeout: 5m
   chartRef:
     kind: OCIRepository
     name: openmfp
   releaseName: openmfp
+  dependsOn:
+    - name: istio-istiod
+      namespace: istio-system
+    - name: account-operator-crds
+      namespace: openmfp-system
+    - name:  extension-content-operator-crds
+      namespace: openmfp-system
   values:
+    keycloak:
+      job:
+        annotations:
+          helm.sh/hook: null
+          helm.sh/hook-weight: null
+          helm.sh/hook-delete-policy: null
+    account-operator:
+      crds:
+        enabled: false
+    extension-content-operator:
+      crds:
+        enabled: false
     components:
-      infra:
-        enabled: true
-      portal:
+      example-resources:
         enabled: false
-      openfga:
-        enabled: false
-      example-ui:
-        enabled: false
-      example-crd-gateway:
-        enabled: true
-    openfga:
-      openfga:
-        datastore:
-          waitForMigrations: false
+
 

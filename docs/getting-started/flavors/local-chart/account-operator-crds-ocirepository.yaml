@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: account-operator-crds
+  namespace: openmfp-system
+spec:
+  interval: 5m
+  url: oci://ghcr.io/openmfp/helm-charts/account-operator-crds
+  ref:
+    semver: "*"
+  secretRef:
+    name: ghcr-credentials

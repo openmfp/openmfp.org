@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - istio.yaml
   - extension-content-operator-crds-ocirepository.yaml
+  - account-operator-crds-ocirepository.yaml
   - extension-content-operator-crds-helmrelease.yaml
-#  - openmfp-ocirepository.yaml
-#  - openmfp-helmrelease.yaml
+  - account-operator-crds-helmrelease.yaml
+  - openmfp-ocirepository.yaml
+  - openmfp-helmrelease.yaml
