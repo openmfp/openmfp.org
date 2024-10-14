@@ -12,7 +12,7 @@ spec:
   values:
     imagePullSecrets: ghcr-credentials
     openfga:
-      url: openfga:8081
+      url: openmfp-openfga:8081
       storeName: test
     extraVolumeMounts:
     - name: rules-config

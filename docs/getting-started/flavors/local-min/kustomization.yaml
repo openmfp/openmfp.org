@@ -3,10 +3,9 @@ kind: Kustomization
 
 resources:
 - ../../infrastructure/controllers
-- ../../apps/base/keycloak
-- ../../apps/base/extension-content-operator
-- ../../apps/base/portal
-- ../../apps/base/example-content
+- ../../apps/base/authorization-webhook
+- ../../apps/base/openmfp-crds
+- ../../apps/base/openmfp
 
-patches:
-- path: disableAccounts.yaml
+# patches:
+# - path: disableAccounts.yaml

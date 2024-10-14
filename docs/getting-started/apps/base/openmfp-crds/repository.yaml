@@ -1,11 +1,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
-  name: account-ui
+  name: openmfp-crds
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/helm-charts/account-ui
+  url: oci://ghcr.io/openmfp/helm-charts/openmfp-crds
   ref:
     semver: "*"
   secretRef:
