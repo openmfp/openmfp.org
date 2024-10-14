@@ -5,8 +5,8 @@ metadata:
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/portal/helm/portal
+  url: oci://ghcr.io/openmfp/helm-charts/portal
   ref:
-    semver: 0.81.0
+    semver: 0.69.4
   secretRef:
     name: ghcr-credentials

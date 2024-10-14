@@ -10,4 +10,4 @@ spec:
     name: extension-content-operator
   releaseName: extension-content-operator
   values:
-    imagePullSecrets: ghcr-credentials # TODO: temporary as long as the repo is private
+    imagePullSecret: ghcr-credentials # TODO: temporary as long as the repo is private
