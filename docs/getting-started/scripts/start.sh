@@ -51,4 +51,7 @@ kubectl apply -k flavors/local-${1}
 if [ "${1}" == "kcp" ]; then
     # apply Istio resources that can't be applied as part of kustomize (Istio CRDs aren't there yet)
     sleep 5 && kubectl apply -f apps/base/kcp/istio.yaml
+
+    echo "\033[0;31mIMPORTANT:\033[0m Please create an entry in your /etc/hosts that points kcp.dev.local to 127.0.0.1."
+    echo "Once kcp is up and running, run '\033[0;32mexport KUBECONFIG=$(pwd)/kcp/admin.kubeconfig\033[0m' to gain access to the root workspace."
 fi
