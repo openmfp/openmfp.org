@@ -1,0 +1,41 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kcp
+  namespace: openmfp-system
+spec:
+  interval: 1m
+  chartRef:
+    kind: HelmChart
+    name: kcp
+  releaseName: kcp
+  dependsOn:
+    - name: cert-manager
+      namespace: cert-manager
+  values:
+    externalHostname: "kcp.dev.local"
+    externalPort: "8443"
+    etcd:
+      resources:
+        requests:
+          memory: 256Mi
+    certificates:
+      dnsNames:
+        - localhost
+        - kcp.dev.local
+      ipAddresses:
+        # this is necessary to allow the istio sidecar to use client certs
+        - 127.0.0.6
+    kcp:
+      tokenAuth:
+        # enables static tokens, see https://github.com/kcp-dev/helm-charts/blob/main/charts/kcp/values.yaml#L75 for them.
+        enabled: true
+      hostAliases:
+        enabled: true
+        values:
+          - ip: "10.96.0.100"
+            hostnames:
+              - "kcp.dev.local"
+    kcpFrontProxy:
+      service:
+        clusterIP: "10.96.0.100"
