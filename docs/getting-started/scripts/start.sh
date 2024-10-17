@@ -4,7 +4,7 @@ set -e
 COL='\033[92m'
 COL_RES='\033[0m'
 # argument to select the installation flavor, options are all or min, verify if the argument was provided
-if [ "${1}" != "all" ] && [ "${1}" != "min" ] && [ "${1}" != "remote" ] && [ "${1}" != "kcp" ]; then
+if [ "${1}" != "all" ] && [ "${1}" != "min" ] && [ "${1}" != "remote" ]; then
     echo "Invalid installation flavor provided, please provide either all (start.sh all) or min (start.sh min)"
     exit 1
 fi
@@ -48,7 +48,7 @@ kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=se
 echo "$COL starting deployments $COL_RES"
 kubectl apply -k flavors/local-${1}
 
-if [ "${1}" == "kcp" ]; then
+if [ "${1}" == "all" ]; then
     # apply Istio resources that can't be applied as part of kustomize (Istio CRDs aren't there yet)
     sleep 5 && kubectl apply -f apps/base/kcp/istio.yaml
 
