@@ -9,5 +9,5 @@ resources:
   - ../../apps/base/openmfp
   - ../../apps/base/kcp
 
-patches:
-- path: enableAccounts.yaml
+# patches:
+# - path: enableAccounts.yaml
