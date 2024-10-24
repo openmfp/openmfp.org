@@ -20,24 +20,3 @@ spec:
     keycloak:
       externalSecrets:
         enabled: false
-
-    kcp:
-      externalHostname: kcp.dev.local
-      certificates:
-        dnsNames:
-          - kcp.dev.local
-      kcpFrontProxy:
-        service:
-          clusterIP: ""
-      kcp:
-        hostAliases:
-          enabled: false
-
-    istio:
-      hosts:
-        - kcp.dev.local
-      gateway:
-        selector:
-          istio: ingressgateway
-        servers:
-          port: 8443
