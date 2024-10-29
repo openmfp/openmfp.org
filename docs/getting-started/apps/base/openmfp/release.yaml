@@ -17,3 +17,6 @@ spec:
     example-resources:
       contentConfigurations:
         providers: true
+    keycloak:
+      externalSecrets:
+        enabled: false

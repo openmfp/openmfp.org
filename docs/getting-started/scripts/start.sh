@@ -48,9 +48,37 @@ kubectl create secret generic keycloak-admin -n openmfp-system --from-literal=se
 echo "$COL starting deployments $COL_RES"
 kubectl apply -k flavors/local-${1}
 
-if [ "${1}" == "all" ]; then
-    # apply Istio resources that can't be applied as part of kustomize (Istio CRDs aren't there yet)
-    sleep 5 && kubectl apply -f apps/base/kcp/istio.yaml
+if [ "${1}" = "all" ]; then
+    # wait for cert-manager to be ready
+    sleep 5
+    kubectl wait --namespace cert-manager \
+      --for=condition=Ready pods \
+      --selector=app.kubernetes.io/instance=cert-manager \
+      --timeout=120s
+
+    sleep 80
+    echo "Waiting for kcp-front-proxy to become ready"
+    kubectl wait --namespace openmfp-system \
+        --for=condition=Ready pods \
+        --selector=app.kubernetes.io/component=front-proxy \
+        --timeout=360s
+
+    KCP_CA_SECRET=openmfp-kcp-front-proxy-cert
+    KCP_ADMIN_SECRET=kcp-cluster-admin-client-cert
+    kubectl get secret $KCP_CA_SECRET -n openmfp-system -o=jsonpath='{.data.tls\.crt}' | base64 -d > kcp/ca.crt
+    kubectl --kubeconfig=$PWD/kcp/admin.kubeconfig config set-cluster workspace.kcp.io/current --server https://kcp.dev.local:8443/clusters/root --certificate-authority=kcp/ca.crt
+    kubectl get secret $KCP_ADMIN_SECRET -n openmfp-system -o=jsonpath='{.data.tls\.crt}' | base64 -d > kcp/client.crt
+    kubectl get secret $KCP_ADMIN_SECRET -n openmfp-system -o=jsonpath='{.data.tls\.key}' | base64 -d > kcp/client.key
+    chmod 600 kcp/client.crt kcp/client.key
+    kubectl --kubeconfig=$PWD/kcp/admin.kubeconfig config set-credentials kcp-admin --client-certificate=kcp/client.crt --client-key=kcp/client.key
+    kubectl --kubeconfig=$PWD/kcp/admin.kubeconfig config set-context workspace.kcp.io/current --cluster=workspace.kcp.io/current --user=kcp-admin
+    kubectl --kubeconfig=$PWD/kcp/admin.kubeconfig config use-context workspace.kcp.io/current
+
+    echo "\033[0;31mIMPORTANT:\033[0m Waiting for kcp-front-proxy to be ready"
+    kubectl wait --namespace openmfp-system \
+      --for=condition=Ready pods \
+      --selector=app.kubernetes.io/component=front-proxy \
+      --timeout=360s
 
     echo "\033[0;31mIMPORTANT:\033[0m Please create an entry in your /etc/hosts that points kcp.dev.local to 127.0.0.1."
     echo "Once kcp is up and running, run '\033[0;32mexport KUBECONFIG=$(pwd)/kcp/admin.kubeconfig\033[0m' to gain access to the root workspace."
