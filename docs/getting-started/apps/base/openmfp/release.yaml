@@ -12,11 +12,18 @@ spec:
   dependsOn:
     - name: openmfp-crds
       namespace: openmfp-system
+    - name: infra
+      namespace: openmfp-system
   values:
     imagePullSecret: ghcr-credentials
     example-resources:
       contentConfigurations:
         providers: true
+    components:
+      infra:
+        enabled: false
     keycloak:
       externalSecrets:
         enabled: false
+      crossplane:
+        enabled: true

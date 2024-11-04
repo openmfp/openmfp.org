@@ -13,3 +13,4 @@ patches:
 - path: enableAccounts.yaml
 - path: patchCrdGateway.yaml
 - path: patchPortal.yaml
+- path: disableKCP.yaml

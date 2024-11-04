@@ -5,7 +5,7 @@ metadata:
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/helm-charts/infra
+  url: oci://ghcr.io/openmfp/helm-charts-priv/infra
   ref:
     semver: "*"
   secretRef:
@@ -26,7 +26,13 @@ spec:
   dependsOn:
     - name: istio-istiod
       namespace: istio-system
+    - name: crossplane
+      namespace: crossplane-system
   values:
+    crossplane:
+      enabled: true
+    externalSecrets:
+      enabled: false
     gateway:
       servers:
         - port:
