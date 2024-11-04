@@ -7,5 +7,5 @@ resources:
 - ../../apps/base/openmfp-crds
 - ../../apps/base/openmfp
 
-# patches:
-# - path: disableAccounts.yaml
+patches:
+- path: disableKCP.yaml
