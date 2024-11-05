@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: authorization-webhook
+  name: iam-authorization-webhook
   namespace: openmfp-system
 spec:
   interval: 5m
   chartRef:
     kind: OCIRepository
-    name: authorization-webhook
-  releaseName: authorization-webhook
+    name: iam-authorization-webhook
+  releaseName: iam-authorization-webhook
   values:
     imagePullSecrets: ghcr-credentials
     openfga:

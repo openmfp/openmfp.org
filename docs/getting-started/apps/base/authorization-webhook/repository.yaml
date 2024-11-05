@@ -1,11 +1,11 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
-  name: authorization-webhook
+  name: iam-authorization-webhook
   namespace: openmfp-system
 spec:
   interval: 5m
-  url: oci://ghcr.io/openmfp/iam-authorization-webhook/helm/iam-authorization-webhook
+  url: oci://ghcr.io/openmfp/helm-charts-priv/iam-authorization-webhook
   ref:
     semver: "*"
   secretRef: # TODO: temporary as long as the repo is private

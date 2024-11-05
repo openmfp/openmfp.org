@@ -41,4 +41,17 @@ spec:
             protocol: HTTP
           hosts:
             - "*"
+    stores:
+      - name: test
+        namespace: openmfp-system
+        coreModuleName: |
+          module core
+          
+          type account
+            relations
+              define member: [user] or owner
+              define owner: [user]
+          
+          type user
+
 
