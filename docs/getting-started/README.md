@@ -38,6 +38,7 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
     ```sh
     brew install fluxcd/tap/flux
     ```
+- [kubectl-kcp](https://docs.kcp.io/kcp/v0.24/setup/kubectl-plugin/).
 
 ## Repository structure
 
@@ -91,5 +92,22 @@ metadata:
   namespace: openmfp-system
 type: Opaque
 " | kubectl apply -f -
+```
 
+## Get started
+
+After you bootstrap your environment, follow the steps in the output:
+1. Update /etc/hosts
+2. Run `kcp start`
+3. Export kubeconfig(check exact command in the output)
+4. Run `kubeconfig kcp ws tree` to print the current workspace tree.
+
+## Troubleshooting
+
+Bootstrapping env can fail of timeout issue, in this case you should increase time limits at `./scripts/start.sh`
+
+Also, make sure your GitHub Personal Access Token is up to date and has the correct permissions,
+otherwise you will get the following error:
+```
+error: no matching resources found
 ```
