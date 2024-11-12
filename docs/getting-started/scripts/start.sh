@@ -61,7 +61,7 @@ if [ "${1}" = "all" ]; then
     kubectl wait --namespace openmfp-system \
         --for=condition=Ready pods \
         --selector=app.kubernetes.io/component=front-proxy \
-        --timeout=360s
+        --timeout=720s
 
     KCP_CA_SECRET=openmfp-kcp-front-proxy-cert
     KCP_ADMIN_SECRET=kcp-cluster-admin-client-cert
@@ -78,8 +78,8 @@ if [ "${1}" = "all" ]; then
     kubectl wait --namespace openmfp-system \
       --for=condition=Ready pods \
       --selector=app.kubernetes.io/component=front-proxy \
-      --timeout=360s
+      --timeout=720s
 
-    echo "\033[0;31mIMPORTANT:\033[0m Please create an entry in your /etc/hosts that points kcp.dev.local to 127.0.0.1."
+    echo "\033[0;31mIMPORTANT:\033[0m Please create an entry in your /etc/hosts with the following line: `127.0.0.1       kcp.dev.local`"
     echo "Once kcp is up and running, run '\033[0;32mexport KUBECONFIG=$(pwd)/kcp/admin.kubeconfig\033[0m' to gain access to the root workspace."
 fi

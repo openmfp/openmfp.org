@@ -38,6 +38,7 @@ upgrade the Helm releases to their latest chart version based on semver ranges.
     ```sh
     brew install fluxcd/tap/flux
     ```
+- [kubectl-kcp](https://docs.kcp.io/kcp/v0.24/setup/kubectl-plugin/).
 
 ## Repository structure
 
@@ -91,5 +92,4 @@ metadata:
   namespace: openmfp-system
 type: Opaque
 " | kubectl apply -f -
-
 ```
