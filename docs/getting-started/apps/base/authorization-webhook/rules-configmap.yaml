@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: webhook-rules
-  namespace: openmfp-system
-data:
-  rules.yaml: |
-    rules: []

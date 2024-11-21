@@ -1,5 +1,0 @@
-# GitHub actions binaries
-bin/
-webhook-config/*
-!webhook-config/*.sh
-!webhook-config/*.yaml
