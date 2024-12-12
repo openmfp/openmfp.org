@@ -98,8 +98,8 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub',
+              href: 'https://github.com/openmfp',
             },
             {
               label: 'Discord',
@@ -112,15 +112,18 @@ const config: Config = {
           ],
         },
         {
-          title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/openmfp',
+              html: `
+                <div style="display: flex; align-items: center; max-width: 100%; gap: 10px;">
+                  <img src="/img/founded-supported.png" alt="European Union Funding Logo" style="max-width: 210px; height: auto;" />
+                  <small style="font-size: 0.55em; line-height: 1.2">
+                    Funded by the European Union - NextGenerationEU. The views and opinions expressed are solely those of the author(s) and do not 
+                    necessarily reflect the views of the European Union or the European Commission. Neither the European Union nor the European 
+                    Commission can be held responsible for them.
+                  </small>
+                </div>
+              `,
             },
           ],
         },
@@ -135,7 +138,7 @@ const config: Config = {
             </svg>
           </a>
         </small>
-`,
+      `,
     },
     prism: {
       theme: prismThemes.github,
