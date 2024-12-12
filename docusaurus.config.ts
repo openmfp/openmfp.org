@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -33,7 +33,6 @@ const config: Config = {
     mermaid: true,
   },
 
-
   themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
@@ -44,15 +43,13 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/openmfp/openmfp.org/blob/main/',
+          editUrl: 'https://github.com/openmfp/openmfp.org/blob/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/openmfp/openmfp.org/blob/main/',
+          editUrl: 'https://github.com/openmfp/openmfp.org/blob/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -77,7 +74,7 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/openmfp',
           label: 'GitHub',
@@ -128,7 +125,17 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} SAP SE or an SAP affiliate company. All rights reserved.<br><small><a href="https://www.sap.com/corporate/en/legal/impressum.html">Legal Disclosure</a></small>`,
+      copyright: `
+        Copyright © ${new Date().getFullYear()} SAP SE or an SAP affiliate company. All rights reserved.<br>
+        <small>
+          <a class="footer__link-item" href="https://www.sap.com/corporate/en/legal/impressum.html">
+            Legal Disclosure 
+            <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
+              <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg>
+          </a>
+        </small>
+`,
     },
     prism: {
       theme: prismThemes.github,
