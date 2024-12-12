@@ -1,7 +1,7 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Getting Started
+# Contribute
 
 The public sources for getting started with openmfp will be placed into the `helm-charts` repo. 

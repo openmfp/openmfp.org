@@ -29,6 +29,13 @@ const config: Config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
@@ -61,7 +68,7 @@ const config: Config = {
       title: 'OpenMFP',
       logo: {
         alt: 'OpenMFP - Open Micro Frontend Platform',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
@@ -86,7 +93,7 @@ const config: Config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/intro',
+              to: '/docs/introduction',
             },
           ],
         },
@@ -121,7 +128,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} SAP SE or an SAP affiliate company. All rights reserved.<br><small><a href="https://www.sap.com/corporate/en/legal/impressum.html">Legal Disclosure</a></small>`,
     },
     prism: {
       theme: prismThemes.github,
