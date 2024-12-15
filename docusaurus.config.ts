@@ -89,8 +89,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/introduction',
+              label: 'OpenMFP Documentation',
+              to: '/docs',
             },
           ],
         },
@@ -100,14 +100,6 @@ const config: Config = {
             {
               label: 'GitHub',
               href: 'https://github.com/openmfp',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
             },
           ],
         },
