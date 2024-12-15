@@ -2,56 +2,94 @@
 sidebar_position: 1
 ---
 # Installation
+We will walk you through the steps to set up a functioning local setup using KIND (Kubernetes IN Docker).
+OpenMFP leverages [Flux](https://fluxcd.io/), a tool designed to keep Kubernetes clusters synchronized with configuration sources, alongside [Kustomize](https://kustomize.io/), a standalone tool for customizing Kubernetes resources. 
+Together, these tools enable efficient and automated cluster management.
 
-For this example we create a functioning local setup using kind.
-The end goal is to leverage Flux and Kustomize to manage the cluster.
+{/* TODO: make this bulled points 
+
+In this guide, you’ll:
+
+1. Configure Flux to install, test, and upgrade a demo application.
+2. Leverage `OCIRepository` and `HelmRelease` custom resources.
+3. Set up Flux to monitor a Helm repository and automatically upgrade Helm releases to their latest chart versions, following semantic versioning (semver) ranges.
+
+By the end, you'll have a working setup ready to explore the full potential of OpenMFP while managing your cluster efficiently.
+*/}
+
 
 We will configure Flux to install, test and upgrade a demo app using
 `OCIRepository` and `HelmRelease` custom resources.
 Flux will monitor the Helm repository, and it will automatically
 upgrade the Helm releases to their latest chart version based on semver ranges.
 
-## Prerequisites
+By the end, you'll have a working setup ready to explore the full potential of OpenMFP while managing your cluster efficiently.
 
-- [Docker](https://www.docker.com) or [podman](https://podman.io): install either docker or podman in order to run the kind cluster
-- [Kind](https://kind.sigs.k8s.io/): In order to have a local kubernetes cluster you can use kind. Kind Installation: [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/)
-  On macOS using Homebrew:
-  ```sh
-  brew install kind
-  ```
-- [Helm](https://helm.sh/): In order to bootstrap flux, helm is required. Checkout various ways to install helm [here](https://helm.sh/docs/intro/install/)
-  On macOS using Homebrew:
-  ```sh
-  brew install helm
-  ```
-- Either specify your github.com username using the `GH_USER` environment variable OR install the gh cli using:
-```sh
-brew install gh
-```
+## Prerequisites  
+
+1. **Container Runtime**  
+   Install either [Docker](https://www.docker.com) or [Podman](https://podman.io) to run the kind cluster:  
+   - **Docker Installation Guide:** [Get Docker](https://docs.docker.com/get-docker/)  
+   - **Podman Installation Guide:** [Install Podman](https://podman.io/getting-started)  
+
+2. **Kind (Kubernetes IN Docker)**  
+   To set up a local Kubernetes cluster, use [Kind](https://kind.sigs.k8s.io/). Follow the [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide for more details. For macOS Installation via Homebrew run:
+    ```sh
+    brew install kind
+    ```
+
+3. **Helm**  
+   [Helm](https://helm.sh/) is required to bootstrap Flux. You can find detailed installation instructions [here](https://helm.sh/docs/intro/install/). For macOS Installation via Homebrew run:
+    ```sh
+    brew install helm
+    ```
+
+4. **GitHub setup**  
+    Set `GH_USER` or install the [GitHub CLI](https://cli.github.com/) to setup your environment for Flux:  
+    - Specify your GitHub username by setting the `GH_USER` environment variable:  
+        ```sh
+        export GH_USER=<your-github-username>
+        ```  
+    - Alternatively, install the GitHub CLI For macOS Installation via Homebrew run:
+        ```sh
+        brew install gh
+        ```
+
+    Set a GitHub token to enable pulling OpenMFP Docker images:
+    ```sh
+    export GH_TOKEN=<your-github-token>
+    ```
+
+5. **Keycloak (Authentication Setup - Optional)**
+{/* TODO: QQ? can the user get started without any identity and access management solution? does open MFP can use smt identity and access management? if so how can the user configure a different one?*/}    OpenMFP supports [Keycloak](https://www.keycloak.org/) as an identity provider for managing user authentication. If you choose to use Keycloak, you must configure the client secret.
+    If you do not plan to Keycloak, you can skip this step.
+    ```sh
+    export KEYCLOAK_SECRET=<keycloak-client-secret>
+    ```
 
 ## Bootstrap local environment
+Once the prerequisites are in place, follow these steps to set up the local environment:
 
-clone the repo https://github.com/openmfp/helm-charts
+1. Clone the OpenMFP Repository
+    Start by cloning the OpenMFP Helm charts repository:
 
-The `scripts/start.sh` contains all steps needed to bootstrap the local environment. The script will automate the following steps:
-- Create kind cluster called `openmfp`
-- Install flux
-- Prepare secrets
+    ```sh
+    git clone https://github.com/openmfp/helm-charts
+    cd helm-charts
+    ```
 
-```sh
-## [Secrets]: configure the following environment variables:
-export KEYCLOAK_SECRET='' # client secret for the 'openmfp' keycloak client
-export GH_TOKEN='' # token used to pull the openmfp docker images
-```
-- apply flux deployment configuration
+2. Run the Bootstrap Script
+    The repository includes a script `local-setup/scripts/start.sh`, it contains all steps needed to bootstrap the local environment. 
+    The script will automate the following steps:
+    - Create kind cluster called `openmfp`
+    - Install flux
+    - Prepare secrets
+    - Apply flux deployment configuration
 
-To start the bootstrapping and local installation invoke
-```sh
-./local-setup/scripts/start.sh
-```
+    To start the bootstrapping and local installation run
+    ```sh
+    ./local-setup/scripts/start.sh
+    ```
 
-Once the process is completed you can access the environment using http://localhost:8000
-
-# Optional Steps
-
-- Keycloak client secret: It is possible to set a custom keycloak client secret by setting the `KEYCLOAK_SECRET` environment variable before running the bootstrap script.
+3. Access the Local Environment
+    Once the bootstrap process finishes, you can access the local OpenMFP environment at: http://localhost:8000
