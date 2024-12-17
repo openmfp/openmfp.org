@@ -55,7 +55,7 @@ By the end, you'll have a working setup ready to explore the full potential of O
         brew install gh
         ```
 
-    Set a GitHub token to enable pulling OpenMFP Docker images:
+    Set a GitHub token to enable pulling OpenMFP Docker images, this token should have the `read:packages` scope.
     ```sh
     export GH_TOKEN=<your-github-token>
     ```
@@ -87,13 +87,13 @@ Once the prerequisites are in place, follow these steps to set up the local envi
 
 2. Run the Bootstrap Script
     The repository includes a script `local-setup/scripts/start.sh`, it contains all steps needed to bootstrap the local environment. 
-    The script will automate the following steps:
+    The script will take some time and it automate the following steps:
     - Create kind cluster called `openmfp`
     - Install flux
     - Prepare secrets
     - Apply flux deployment configuration
 
-    To start the bootstrapping and local installation run
+    To start the bootstrapping and local installation, run the following command:
     ```sh
     ./local-setup/scripts/start.sh
     ```
@@ -108,3 +108,4 @@ If you want to delete the local environment and remove the KIND cluster, run the
 ```sh
 kind delete cluster --name openmfp
 ```
+If the deletion is stuck validate that the container runtime (Docker or Podman) is started and running.
