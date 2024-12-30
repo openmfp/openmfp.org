@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -29,6 +29,12 @@ const config: Config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
@@ -37,15 +43,13 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/openmfp/openmfp.org/blob/main/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/openmfp/openmfp.org/blob/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -61,16 +65,16 @@ const config: Config = {
       title: 'OpenMFP',
       logo: {
         alt: 'OpenMFP - Open Micro Frontend Platform',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Docs',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/openmfp',
           label: 'GitHub',
@@ -85,8 +89,8 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'OpenMFP Documentation',
+              to: '/docs',
             },
           ],
         },
@@ -94,34 +98,39 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'GitHub',
+              href: 'https://github.com/openmfp',
             },
           ],
         },
         {
-          title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              html: `
+                <div style="display: flex; align-items: center; max-width: 100%; gap: 10px;">
+                  <img src="/img/founded-supported.png" alt="European Union Funding Logo" style="max-width: 210px; height: auto;" />
+                  <small style="font-size: 0.55em; line-height: 1.2">
+                    Funded by the European Union - NextGenerationEU. The views and opinions expressed are solely those of the author(s) and do not 
+                    necessarily reflect the views of the European Union or the European Commission. Neither the European Union nor the European 
+                    Commission can be held responsible for them.
+                  </small>
+                </div>
+              `,
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `
+        Copyright © ${new Date().getFullYear()} SAP SE or an SAP affiliate company. All rights reserved.<br>
+        <small>
+          <a class="footer__link-item" href="https://www.sap.com/corporate/en/legal/impressum.html">
+            Legal Disclosure 
+            <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
+              <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg>
+          </a>
+        </small>
+      `,
     },
     prism: {
       theme: prismThemes.github,
