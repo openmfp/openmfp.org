@@ -14,8 +14,13 @@ You are welcome to contribute with your pull requests. These steps explain the c
 1. Sign the Developer Certificate of Origin (DCO).
 
 ## Testing
-- Make sure the website builds as expected by running `npm run build` in the root directory of the repository.
-- Make sure your changes render as expected in the browser, you can test the website locally by running `npm start` in the root directory of the repository.
+> **Info:**
+>
+> Run the following npm commands from the root of the repository.
+- Install all dependencies: `npm install`
+- Ensure the website builds: `npm run build`
+- Start the website locally: `npm start`
+- Make sure your changes render as expected in the browser as expected.
 
 ## Issues
 We use GitHub issues to track bugs. Please ensure your description is
