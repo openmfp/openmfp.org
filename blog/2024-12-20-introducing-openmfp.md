@@ -17,5 +17,5 @@ We're excited to unveil OpenMFP (Open Micro Frontend Platform), a powerful frame
 * Extensible Control Plane
 * Customizable Permission Models
 
-OpenMFP enables seamless service integration, improves user experience, and ensures teams can develop, release, and maintain their capabilities independently. Ready to simplify your micro frontend architecture? ✨ check our [documentation](./docs/).
+OpenMFP enables seamless service integration, improves user experience, and ensures teams can develop, release, and maintain their capabilities independently. Ready to simplify your micro frontend architecture? ✨ check our [documentation](/docs/).
 
