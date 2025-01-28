@@ -6,18 +6,6 @@ We will walk you through the steps to set up a functioning local setup using KIN
 OpenMFP leverages [Flux](https://fluxcd.io/), a tool designed to keep Kubernetes clusters synchronized with configuration sources, alongside [Kustomize](https://kustomize.io/), a standalone tool for customizing Kubernetes resources. 
 Together, these tools enable efficient and automated cluster management.
 
-{/* TODO: make this bulled points 
-
-In this guide, you’ll:
-
-1. Configure Flux to install, test, and upgrade a demo application.
-2. Leverage `OCIRepository` and `HelmRelease` custom resources.
-3. Set up Flux to monitor a Helm repository and automatically upgrade Helm releases to their latest chart versions, following semantic versioning (semver) ranges.
-
-By the end, you'll have a working setup ready to explore the full potential of OpenMFP while managing your cluster efficiently.
-*/}
-
-
 We will configure Flux to install, test and upgrade a demo app using
 `OCIRepository` and `HelmRelease` custom resources.
 Flux will monitor the Helm repository, and it will automatically
@@ -31,9 +19,10 @@ By the end, you'll have a working setup ready to explore the full potential of O
    Install either [Docker](https://www.docker.com) or [Podman](https://podman.io) to run the kind cluster:  
    - **Docker**: Version `27.0.0` or higher. Installation Guide [Get Docker](https://docs.docker.com/get-docker/)  
    - **Podman**: Version `5.1.0` or higher. Installation Guide [Install Podman](https://podman.io/get-started)  
+   Ensure Docker or Podman is configured to use at least 10GB of memory.
 
 2. **Kind (Kubernetes IN Docker)**  
-   To set up a local Kubernetes cluster, use [Kind](https://kind.sigs.k8s.io/). Follow the [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide for more details. For macOS Installation via Homebrew run:
+   To set up a local Kubernetes cluster, use [Kind](https://kind.sigs.k8s.io/). Follow the [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide for more details. For macOS Installation via [Homebrew](https://brew.sh/) run:
     ```sh
     brew install kind
     ```
@@ -44,7 +33,14 @@ By the end, you'll have a working setup ready to explore the full potential of O
     brew install helm
     ```
 
-4. **GitHub setup**  
+4. **Kubectl**  
+   [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the Kubernetes command-line tool. You can install it using the following command:
+    ```sh
+    brew install kubectl
+    ```
+    For more installation options, refer to the [Kubectl Installation Guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+
+5. **GitHub setup**  
     Set `GH_USER` or install the [GitHub CLI](https://cli.github.com/) to setup your environment for Flux:  
     - Specify your GitHub username by setting the `GH_USER` environment variable:  
         ```sh
@@ -60,13 +56,13 @@ By the end, you'll have a working setup ready to explore the full potential of O
     export GH_TOKEN=<your-github-token>
     ```
 
-5. **Keycloak (Authentication Setup - Optional)**  
+6. **Keycloak (Authentication Setup - Optional)**  
    You only need this step if you plan to use your own Keycloak instance. If not, a default Keycloak will be installed automatically during the setup process.
    To use your own Keycloak, set up the client secret as an environment variable:  
    ```sh
    export KEYCLOAK_SECRET=<keycloak-client-secret>
 
-6. **Free Port 8000**  
+7. **Free Port 8000**  
    The local OpenMFP portal will use port `8000`. Ensure this port is not in use by another application before proceeding.  
    - On Linux/macOS, you can check and free the port with the following commands:
     ```sh
@@ -109,3 +105,23 @@ If you want to delete the local environment and remove the KIND cluster, run the
 kind delete cluster --name openmfp
 ```
 If the deletion is stuck validate that the container runtime (Docker or Podman) is started and running.
+
+## Troubleshooting
+
+If the bootstrap script does not successfully finish, connect to the `kind-openmfp` cluster, take the following steps to investigate:
+
+1. Verify the cluster is running and accessible:
+```sh
+kubectl cluster-info --context kind-openmfp
+```
+
+2. Identify any pods that are not in the `Running` status:
+```sh
+kubectl get pods --all-namespaces | grep -v Running
+```
+
+3. For pods that are stuck or failing, inspect the events for more details:
+```sh
+kubectl describe pod <pod-name> -n <namespace>
+```
+Review the `Events` section in the output to pinpoint and address the underlying issue.
