@@ -1,7 +1,6 @@
 ---
 slug: introducing-openmfp
 title: Introducing OpenMFP
-authors: [tino, leidy]
 tags: [openmfp]
 ---
 
