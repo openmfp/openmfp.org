@@ -1,6 +1,44 @@
 ---
 sidebar_position: 3
 ---
-# Create Microfrontend
+# Create and Visualize a Microfrontend in the OpenMFP Portal
 
+In this section we are gonna create one simple Microfrontend using angular and integrate it into the OpenMFP Portal.
+This is juts a simple example, you can use any other framework or technology to create your Microfrontend. If you already have one created you can skip the First part of this guide and jump to the step 3.
 
+## Prerequisites
+- [Node.js](https://nodejs.org/en/download/) active LTS or maintenance LTS version.
+- npm (included with Node.js)
+- [Angular CLI](https://angular.io/cli) installed globally. If you don't have it installed, you can do so by running:
+```sh
+npm install -g @angular/cli
+
+```
+you can check if everything is installed by running:
+```sh
+ng version
+``` 
+this should show you the version of the Angular CLI, Node and the Package Manager npm.
+
+## Step 1: Create a new Angular Project
+Run the following command to generate a new Angular project:
+
+```sh
+ng new my-microfrontend
+```
+
+Move into your project directory:
+
+```sh
+cd my-microfrontend
+```
+
+## Step 2: Run the Angular App
+Start the development server:
+
+```sh
+ng serve
+```
+Then open your browser and go to: http://localhost:4200/
+
+## Step 3: Create a Content Configuration File

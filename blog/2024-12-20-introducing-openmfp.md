@@ -4,6 +4,8 @@ title: Introducing OpenMFP
 tags: [openmfp]
 ---
 
+<!-- truncate -->
+
 ## Introducing OpenMFP: Simplifying Micro Frontends Platforms 🌐🚀 
 
 We're excited to unveil OpenMFP (Open Micro Frontend Platform), a powerful framework designed for building enterprise-level web applications and portals.
