@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The *Open Micro Frontend Platform (OpenMFP)* aims to provide the opinionated, “batteries-included” platform for micro frontend architecture, enabling a well integrated, state of the art end user experience.
 
-This documentation provides an overview of the core concepts of OpenMFP. You will be able to find more detailed information in the upcoming "Architecture" section.
+This documentation provides an overview of OpenMFP's core concepts. For more in-depth details, refer to the upcoming "Architecture" section.
 
 ## Extensibility & Micro Frontend Architecture
 
@@ -14,17 +14,17 @@ OpenMFP is designed to be extensible and modular. It is built around the concept
 
 This allows teams to work on different parts of the application without interfering with each other, and to release updates without affecting the rest of the system.
 
-Extensions are the building blocks of OpenMFP. They allow the platform to obtain additional features. Practically every OpenMFP feature is an extension.
+Extensions are the building blocks of OpenMFP, enabling the platform to acquire additional features. In fact, nearly every feature in OpenMFP is an extension.
 
-The three most common types of extensions are:
+The three most common types of extensions in OpenMFP are:
 
-1. **UI-only micro frontends** - micro frontends are self-sufficient applications running inside of another application, also called the “microservices for the frontend”. They allow you to do independent releases, split up applications into smaller chunks, and reuse shared functionality/infrastructure. OpenMFP uses the [Luigi](https://luigi-project.io/) micro frontend framework to develop micro frontends.
+1. **UI-only Micro Frontends** - micro frontends are self-sufficient applications running within another application, also called the “microservices for the frontend”. They allow you to do independent releases, split up applications into smaller chunks, nd support the reuse of shared functionality and infrastructure. OpenMFP uses the [Luigi](https://luigi-project.io/) framework to develop these micro frontends.
 
-An OpenMFP micro frontend application should be able to work in a “micro frontend” mode, meaning it should:
-  * Not show a Header/Footer or sidebar Menu
-  * It should use the Luigi Client for an app internal navigation to properly adjust the browser URL on navigate
-  * It should be able to consume the provided Luigi context and the backend APIs should be able to accept the provided JWT token.
-2. **Micro frontends with backend service dependencies** - this option combines the micro frontend with additional backend services such as Events.
+    An OpenMFP micro frontend application should be able to work in a “micro frontend” mode, which means it should:
+    * Not show a Header, Footer or sidebar Menu.
+    * It should use the Luigi Client for internal navigation to properly adjust the browser URL on navigate.
+    * It should be able to consume the provided Luigi context and the backend APIs should be able to accept the provided JWT token.
+2. **Micro Frontends with Backend Service Dependencies** - this option combines micro frontend with additional backend services such as Events.
 3. **Service-only Extensions** - Extensions which include only backend services.
 
 :::info
@@ -39,20 +39,19 @@ Currently we make use of Keycloak for authentication. Keycloak is an open source
 
 ### Control Plane
 
-The Control Plane will be the central point of control for the OpenMFP platform, which will offer an API to manage the platform and its capabilities. The Control Plane will be responsible for managing the lifecycle of the platform, including creating and managing Kubernetes clusters (workspaces), users and permissions.
+The Control Plane will serve as the central point of control for the OpenMFP platform, which will offer an API to manage the platform and its capabilities. The Control Plane will be responsible for managing the lifecycle of the platform, including creating and managing Kubernetes clusters (workspaces), as well as managing users and permissions.
 
 We plan to leverage [kcp](https://www.kcp.io/) (Kubernetes-like Control Plane) so that you can provide your user specific control plane capabilities.
 
 ### Authorization
 
-The inclusion of a central ReBAC service (relationship based access control) addresses the important need of having a seamless user and permission management that supports the same extensibility and modularity for access control, removing friction from scenarios that span multiple components.
+The inclusion of a central ReBAC (Relationship Based Access Control) service addresses the crucial need of having a seamless user and permission management. This service supports the same extensibility and modularity for access control, removing friction in scenarios that span multiple components.
 
-- Central management of authorization to eliminate the need of double maintaining access permissions for every capability / service
-- Relationship based model can be extended dynamically with rules from different parties
-- Architecture proven to support cloud scale
+Key benefits include:
 
-We aim to provide a central authorization capability, based on OpenFGA (which is based on Google’s “Zanzibar” architecture paper).
+- Central authorization management, eliminating the need to maintain access permissions for every capability or service separately.
+- A relationship based model that can be dynamically extended with rules from different parties.
+- An architecture proven to scale effectively in cloud environments.
 
-
-
+We aim to provide a central authorization capability, based on [OpenFGA](https://openfga.dev) (which is based on Google’s “Zanzibar” architecture paper).
 
