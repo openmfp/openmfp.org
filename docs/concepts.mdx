@@ -6,7 +6,7 @@ sidebar_position: 2
 
 The *Open Micro Frontend Platform (OpenMFP)* aims to provide the opinionated, “batteries-included” platform for micro frontend architecture, enabling a well integrated, state of the art end user experience.
 
-This documentation provides an overview of the core concepts of *OpenMFP*. You will be able to find more detailed information in the upcoming "Architecture" section.
+This documentation provides an overview of the core concepts of OpenMFP. You will be able to find more detailed information in the upcoming "Architecture" section.
 
 ## Extensibility & Micro Frontend Architecture
 
@@ -35,14 +35,15 @@ OpenMFP does not enforce any rules around how to build/deploy Extensions. They m
 
 Currently we make use of Keycloak for authentication. Keycloak is an open source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
 
-### Planned Features
+## Planned Features
 
-#### Control Plane
+### Control Plane
 
-The Control Plane is the central point of control for the OpenMFP platform. It provides a single point of access to all the services and features of the platform, and allows you to manage and monitor your applications and services.
+The Control Plane will be the central point of control for the OpenMFP platform, which will offer an API to manage the platform and its capabilities. The Control Plane will be responsible for managing the lifecycle of the platform, including creating and managing workspaces, managing users and permissions, and providing a single point of control for all your Kubernetes clusters.
+
+We plan to leverage [kcp](https://www.kcp.io/) (Kubernetes-like Control Plane) so that you can provide your user specific control plane capabilities.
 
 ### Authorization
-
 
 The inclusion of a central ReBAC service (relationship based access control) addresses the important need of having a seamless user and permission management that supports the same extensibility and modularity for access control, removing friction from scenarios that span multiple components.
 
