@@ -1,9 +1,10 @@
 ---
 slug: introducing-openmfp
 title: Introducing OpenMFP
-authors: [tino, leidy]
 tags: [openmfp]
 ---
+
+<!-- truncate -->
 
 ## Introducing OpenMFP: Simplifying Micro Frontends Platforms 🌐🚀 
 

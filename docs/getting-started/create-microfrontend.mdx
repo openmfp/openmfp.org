@@ -1,0 +1,89 @@
+---
+sidebar_position: 3
+---
+import MyMicrofrontendImgUrl from '@site/static/img/my-microfrontend.png';
+
+# Create a Microfrontend
+
+In this section we are gonna create one simple Microfrontend using angular and integrate it into the OpenMFP Portal.
+
+This is juts a simple example, you can use any other framework or technology to create your Microfrontend. If you already have one created you can skip the First part of this guide and jump to the [Step 3](#step-3-create-a-content-configuration-file).
+
+## Prerequisites
+- [Node.js](https://nodejs.org/en/download/) active LTS or maintenance LTS version.
+- npm (included with Node.js)
+- [Angular CLI](https://angular.io/cli) installed globally. If you don't have it installed, you can do so by running:
+```sh
+npm install -g @angular/cli
+
+```
+you can check if everything is installed by running:
+```sh
+ng version
+``` 
+this should show you the version of the Angular CLI, Node and the Package Manager npm.
+
+## Step 1: Create a new Angular Project
+Run the following command to generate a new Angular project:
+
+```sh
+ng new my-microfrontend
+```
+
+Move into your project directory:
+
+```sh
+cd my-microfrontend
+```
+
+## Step 2: Run the Angular App
+Start the development server:
+
+```sh
+ng serve
+```
+Then open your browser and go to: http://localhost:4200/
+
+## Step 3: Create a Content Configuration File
+Create a new file called `content-configuration.json` in the `src/assets` folder of your Angular project or any path that will serve this file.
+This file will contain the configuration for your Microfrontend.
+
+The following is an example of very minimal content configuration file. The contents of this file are described in great detail at [Configuration Documentation](https://github.tools.sap/openmfp/portal-ui-lib/blob/main/docs/readme-nodes-configuration.md#the-content-configuration-file-contents).
+
+```json
+{
+  "name": "my-microfrontend",
+  "luigiConfigFragment": {
+    "data": {
+      "nodes": [
+        {
+          "pathSegment": "ur-path-segment", // This is used to build the path in the browser URL.
+          "label": "My Microfrontend", // The name of the node which will be visible on your page.
+          "hideFromNav": false, // Shows or hides a navigation node. You can still navigate to the node but it does not show up in the top or left pane.
+          "urlSuffix": "/index.html", // The url suffix of the micro frontend which will be displayed in the main content area of your page.
+          "icon": "folder", // The name of an icon from the [OpenUI5](https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html) or a custom link.
+          "entityType": "global"
+        }
+      ]
+    }
+  }
+}
+```
+
+## Step 4: Serve the Content Configuration File
+
+Restart the server and validate that the configuration is loaded correctly in the path http://localhost:4200/assets/content-configuration.json
+
+## Step 5: Consuming Local Content Configuration
+To see the Microfrontend in the OpenMFP Portal, you need to use your local `content-configuration.json` file.
+Go to the user button located in the top-right corner and navigate to **Settings** -> **Development**.
+
+There, you will find the Local Development Mode. Activate **Is Development Mode Active** and enter the content configuration file path in the input field.
+
+Click **Add** and then **Save**, and your Microfrontend should appear in the OpenMFP Portal.
+
+<div style={{textAlign: 'center'}}>
+<img src={MyMicrofrontendImgUrl} height="400" alt="Register User Form"/>
+</div>
+
+
