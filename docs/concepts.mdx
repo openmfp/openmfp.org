@@ -35,22 +35,22 @@ OpenMFP does not enforce any rules around how to build/deploy Extensions. They m
 ## OpenMFP Components Overview
 This section describes the main components of OpenMFP and their functions in the system.
 
-### User (Person)
+### User
 * Represents an operator or end-user accessing the OpenMFP portal.
 * Initiates authentication to gain access to integrated services.
 
-### Identity Provider (Software System)
+### Identity Provider 
 * A configured OpenID Connect-capable Identity Provider.
 * Responsible for authenticating users and issuing secure tokens.
 * Provides authentication tokens for further interactions with the system.
 * Currently we make use of [Keycloak](https://www.keycloak.org/) for authentication. Keycloak is an open source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
 
-### OpenMFP Portal (Software System)
+### OpenMFP Portal
 * Acts as the central user interface for accessing the platform.
 * Facilitates authentication by requesting tokens from the Identity Provider.
 * Integrates micro frontends for various services and applications.
 
-### Integrated Service (Software System)
+### Integrated Service
 * Represents extensions (services or applications) that are configured to work with OpenMFP.
 * Consumed through the OpenMFP portal via micro frontend integration.
 
