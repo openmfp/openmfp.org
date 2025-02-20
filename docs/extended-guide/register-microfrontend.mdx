@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 ---
+import MyMicrofrontendImgUrl from '@site/static/img/my-microfrontend.png';
 
 # Registering a Microfrontend in OpenMFP
 
@@ -37,7 +38,6 @@ spec:
 ```
 
 Here is an example of an inline configuration:
-{/* TODO: test that this works */}
 
 ```yaml
 apiVersion: core.openmfp.io/v1alpha1
@@ -58,7 +58,7 @@ spec:
             "nodes": [
               {
                 "pathSegment": "ur-path-segment-inline",
-                "label": "My Microfrontend Inlined",
+                "label": "My Microfrontend",
                 "entityType": "global",
                 "hideFromNav": false,
                 "urlSuffix": "/index.html",
@@ -102,3 +102,6 @@ kubectl apply -f content-configuration.yaml --context kind-openmfp
 ### 4. View the Microfrontend in the OpenMFP Portal
 
 After successfully applying the configuration, your microfrontend should be visible in the OpenMFP portal.
+<div style={{textAlign: 'center'}}>
+<img src={MyMicrofrontendImgUrl} height="400" alt="My Microfrontend in the OpenMFP Portal"/>
+</div>
