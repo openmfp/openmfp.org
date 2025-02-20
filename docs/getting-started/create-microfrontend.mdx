@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 ---
-import MyMicrofrontendImgUrl from '@site/static/img/my-microfrontend.png';
+import MyMicrofrontendImgUrl from '@site/static/img/my-microfrontend-global.png';
 
 # Create a Microfrontend
 
@@ -62,8 +62,7 @@ The following is an example of very minimal content configuration file. The cont
           "hideFromNav": false, // Shows or hides a navigation node. You can still navigate to the node but it does not show up in the top or left pane.
           "urlSuffix": "/index.html", // The url suffix of the micro frontend which will be displayed in the main content area of your page.
           "icon": "folder", // The name of an icon from the [OpenUI5](https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html) or a custom link.
-          "entityType": "global",
-          "loadingIndicator": {
+          "entityType": "global", // the place in the OpenMFP where the microfrontend will be displayed.
             "enabled": false // Shows or hides a loading indicator when navigating to the node, if you microfrontend does not have a Luigi Client then it should be set to false.
           }
         }

@@ -2,6 +2,103 @@
 sidebar_position: 1
 ---
 
-# Register a Microfrontend
+# Registering a Microfrontend in OpenMFP
 
 You can register a microfrontend in the OpenMFP Portal so that it can be permanently integrated into your portal. This guide will walk you through the process of registering a microfrontend.
+
+## Steps to Register a Microfrontend
+
+### 1. Create a ContentConfiguration
+
+To register a microfrontend in OpenMFP, you need to create a `ContentConfiguration`. This is a Kubernetes Custom Resource (CRD) managed by the `openmfp-extension-manager-operator`.
+Once deployed, the operator reconciles the resource to reflect the defined configuration.
+
+The `ContentConfiguration` can be defined using either `remoteConfiguration` or `inlineConfiguration`.
+
+A remote configuration references an externally hosted JSON or YAML file, when changes are applied the ContentConfiguration Custom Resource is updated.
+{/* TODO: clarify and add -> changes are applied every five minutes?, with a label? */}
+
+An inline configuration embeds the JSON or YAML content directly, making changes effective immediately once the resource is updated.
+
+Here is an example of a remote configuration:
+
+```yaml
+apiVersion: core.openmfp.io/v1alpha1
+kind: ContentConfiguration
+metadata:
+  name: my-microfrontend
+  namespace: openmfp-system
+  labels:
+    portal.openmfp.org/entity: global
+spec:
+  remoteConfiguration:
+    url: https://url.hosting.my.mycrofrontend/assets/content-configuration.json
+    contentType: json
+```
+
+Here is an example of an inline configuration:
+{/* TODO: test that this works */}
+
+```yaml
+apiVersion: core.openmfp.io/v1alpha1
+kind: ContentConfiguration
+metadata:
+  name: my-microfrontend
+  namespace: openmfp-system
+  labels:
+    portal.openmfp.org/entity: global
+spec:
+  inlineConfiguration:
+    content: |-
+      {
+        "name": "my-microfrontend",
+        "url": "https://url.hosting.my.mycrofrontend",
+        "luigiConfigFragment": {
+          "data": {
+            "nodes": [
+              {
+                "pathSegment": "ur-path-segment-inline",
+                "label": "My Microfrontend Inlined",
+                "entityType": "global",
+                "hideFromNav": false,
+                "urlSuffix": "/index.html",
+                "icon": "folder",
+                "loadingIndicator": {
+                  "enabled": false
+                }
+              }
+            ]
+          }
+        }
+      }
+    contentType: json
+```
+
+Ensure that the label `portal.openmfp.org/entity` is present. 
+
+If using a remote configuration, the specified URL must be accessible by the cluster to ensure proper retrieval and application of the configuration.
+
+### 2. Apply the Configuration
+
+Once you have created the YAML file, apply it to the Kubernetes cluster using the following command:
+
+```sh
+kubectl apply -f content-configuration.yaml --context kind-openmfp
+```
+
+### 3. Edit an Existing Configuration
+
+If you need to update an existing ContentConfiguration, you can edit it directly in the cluster using:
+
+```sh
+kubectl edit contentconfiguration my-microfrontend --namespace openmfp-system --context kind-openmfp
+```
+Alternatively, modify the YAML file locally and reapply it:
+
+```sh
+kubectl apply -f content-configuration.yaml --context kind-openmfp
+```
+
+### 4. View the Microfrontend in the OpenMFP Portal
+
+After successfully applying the configuration, your microfrontend should be visible in the OpenMFP portal.
