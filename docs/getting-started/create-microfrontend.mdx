@@ -2,6 +2,7 @@
 sidebar_position: 3
 ---
 import MyMicrofrontendImgUrl from '@site/static/img/my-microfrontend-global.png';
+import LocalDevSetupImgUrl from '@site/static/img/local-dev-setup.png';
 
 # Create a Microfrontend
 
@@ -63,6 +64,7 @@ The following is an example of very minimal content configuration file. The cont
           "urlSuffix": "/index.html", // The url suffix of the micro frontend which will be displayed in the main content area of your page.
           "icon": "folder", // The name of an icon from the [OpenUI5](https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html) or a custom link.
           "entityType": "global", // the place in the OpenMFP where the microfrontend will be displayed.
+          "loadingIndicator": {
             "enabled": false // Shows or hides a loading indicator when navigating to the node, if you microfrontend does not have a Luigi Client then it should be set to false.
           }
         }
@@ -81,6 +83,10 @@ To see the Microfrontend in the OpenMFP Portal, you need to use your local `cont
 Go to the user button located in the top-right corner and navigate to **Settings** -> **Development**.
 
 There, you will find the Local Development Mode. Activate **Is Development Mode Active** and enter the content configuration file path in the input field.
+
+<div style={{textAlign: 'center'}}>
+<img src={LocalDevSetupImgUrl} height="600" alt="Local Develipment Mode in the OpenMFP Portal"/>
+</div>
 
 Click **Add** and then **Save**, and your Microfrontend should appear in the OpenMFP Portal.
 
