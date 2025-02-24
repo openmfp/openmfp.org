@@ -249,7 +249,7 @@ Further Portal specific parameters are supported on node level:
 - **children** - contains child elements. The children nodes can have the following Luigi navigation parameters: **pathSegment**, **label**, **hideFromNav**, **icon**, **useHashRouting**, **virtualTree**, **urlSuffix** and **category**.
   To build the viewUrl of the child node the **urlSuffix** property of the parent is used: `urlTemplateParams.url`+`node.urlSuffix`+`child.urlSuffix`.
 
-- **visibleForEntityContext** - allows to filter the nodes that are shown based on the [entity context](./readme-luigi-context.md#entity-context). Currently, the backend provides an entity context for the entities `project` and `component`. A node is shown, if the entity context provides all values as required by the filter, for this the [_.isMatch](https://lodash.com/docs/4.17.15#isMatch) function is used. The format of the filter is the following:
+- **visibleForEntityContext** - allows to filter the nodes that are shown based on the [entity context](./luigi-context.mdx#entity-context). Currently, the backend provides an entity context for the entities `project` and `component`. A node is shown, if the entity context provides all values as required by the filter, for this the [_.isMatch](https://lodash.com/docs/4.17.15#isMatch) function is used. The format of the filter is the following:
 
 ```json
 "visibleForEntityContext": {
@@ -264,9 +264,9 @@ Further Portal specific parameters are supported on node level:
 }
 ```
 
-- **visibleForContext** - allows to filter the nodes that are shown based on the [context](./readme-luigi-context.md). In this field, a [JMESPath](https://jmespath.org/specification.html) query can be defined. When it evaluates to `true`, the node will be shown.
+- **visibleForContext** - allows to filter the nodes that are shown based on the [context](./luigi-context.mdx). In this field, a [JMESPath](https://jmespath.org/specification.html) query can be defined. When it evaluates to `true`, the node will be shown.
 
-- **configurationMissing** - allows to show a "configuration missing" page based on the [context](./readme-luigi-context.md). In this field, a [JMESPath](https://jmespath.org/specification.html) query can be defined. When it evaluates to `true`, the "configuration missing" page will be shown, otherwise the normal page.
+- **configurationMissing** - allows to show a "configuration missing" page based on the [context](./luigi-context.mdx). In this field, a [JMESPath](https://jmespath.org/specification.html) query can be defined. When it evaluates to `true`, the "configuration missing" page will be shown, otherwise the normal page.
 
 - **configurationHint** - Allows to customise the "configuration missing" page with an extension specific hint.
 
