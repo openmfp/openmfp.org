@@ -2,6 +2,13 @@
 
 This Repository contains the OpenMFP Website and Documentation. This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
+## Local Run
+
+```sh
+npm install
+npm run start
+```
+
 ## Releasing
 
 The release is performed automatically through a GitHub Actions Workflow. The resulting website will be available as github page under the following URL: https://openmfp.github.io/openmfp.org/
@@ -12,6 +19,7 @@ The website requires an installation of node.js and npm.
 Checkout the [package.json](package.json) for the required node version and dependencies and install them via `npm install`.
 
 ## Security / Disclosure
+
 If you find any bug that may be a security problem, please follow our instructions at [in our security policy](https://github.com/openmfp/openmfp.org/security/policy) on how to report it. Please do not create GitHub issues for security-related doubts or problems.
 
 ## Contributing
