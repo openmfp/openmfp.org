@@ -1,0 +1,9 @@
+version = 1
+SPDX-PackageName = "openmfp.org"
+SPDX-PackageDownloadLocation = "https://github.com/openmfp/openmfp.org"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2025 SAP SE or an SAP affiliate company and openMFP contributors and portal contributors."
+SPDX-License-Identifier = "Apache-2.0"
