@@ -1,5 +1,9 @@
 # OpenMFP - Website and Documentation
 
+![Build Status](https://github.com/openmfp/openmfp.org/actions/workflows/pipeline.yaml/badge.svg)
+[![REUSE status](
+https://api.reuse.software/badge/github.com/openmfp/openmfp.org)](https://api.reuse.software/info/github.com/openmfp/openmfp.org)
+
 This Repository contains the OpenMFP Website and Documentation. This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ## Local Run
@@ -32,5 +36,5 @@ Please refer to the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file in this reposi
 
 ## Licensing
 
-Copyright 2024 SAP SE or an SAP affiliate company and OpenMFP contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/openmfp/openmfp.org).
+Copyright 2025 SAP SE or an SAP affiliate company and OpenMFP contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/openmfp/openmfp.org).
 
