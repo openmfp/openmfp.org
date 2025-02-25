@@ -1,6 +1,6 @@
 # OpenMFP - Website and Documentation
 
-![Build Status](https://github.com/openmfp/openmfp.org/actions/workflows/pipeline.yaml/badge.svg)
+![Build Status](https://github.com/openmfp/openmfp.org/actions/workflows/pipeline.yml/badge.svg)
 [![REUSE status](
 https://api.reuse.software/badge/github.com/openmfp/openmfp.org)](https://api.reuse.software/info/github.com/openmfp/openmfp.org)
 
