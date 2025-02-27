@@ -5,13 +5,13 @@ import MyMicrofrontendImgUrl from '@site/static/img/my-microfrontend.png';
 
 # Registering a Microfrontend in OpenMFP
 
-You can register a microfrontend in the OpenMFP Portal to integrate it permanently into your portal. This guide walks you through the process of registering a microfrontend.
+You can register a micro frontend in the OpenMFP Portal to integrate it permanently into your portal. This guide walks you through the process of registering a micro frontend.
 
 ## Steps to Register a Microfrontend
 
 ### 1. Create a ContentConfiguration
 
-To register a microfrontend in OpenMFP, you need to create a `ContentConfiguration`. This is a Kubernetes Custom Resource (CRD) managed by the `openmfp-extension-manager-operator`.
+To register a micro frontend in OpenMFP, you need to create a `ContentConfiguration`. This is a Kubernetes Custom Resource (CRD) managed by the `openmfp-extension-manager-operator`.
 Once deployed, the operator reconciles the resource to reflect the defined configuration.
 
 The `ContentConfiguration` can be defined using either `remoteConfiguration` or `inlineConfiguration`:
@@ -104,7 +104,7 @@ kubectl apply -f content-configuration.yaml --context kind-openmfp
 
 ### 4. View the Microfrontend in the OpenMFP Portal
 
-After successfully applying the configuration, your microfrontend should be visible in the OpenMFP portal.
+After successfully applying the configuration, your micro frontend should be visible in the OpenMFP portal.
 
 <div style={{textAlign: 'center'}}>
   <img src={MyMicrofrontendImgUrl} height="400" alt="My Microfrontend in the OpenMFP Portal"/>

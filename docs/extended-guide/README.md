@@ -9,5 +9,5 @@ The Extended Guide is designed for users who want to dive deeper into OpenMFP’
 In this guide, you’ll learn how to:
 
 * Set up your content configuration file to define your Microfrontend structure and behavior.
-* Register your microfrontend within the OpenMFP cluster to seamlessly integrate it into your portal.
+* Register your micro frontend within the OpenMFP cluster to seamlessly integrate it into your portal.
 * Leverage OpenMFP’s features.
