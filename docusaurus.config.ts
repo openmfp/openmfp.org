@@ -33,11 +33,12 @@ const config: Config = {
     mermaid: true,
   },
 
-  themes: ['@docusaurus/theme-mermaid',
+  themes: [
+    '@docusaurus/theme-mermaid',
     [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
+      require.resolve('@easyops-cn/docusaurus-search-local'),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      ({
+      {
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
@@ -46,7 +47,7 @@ const config: Config = {
 
         // If you're using `noIndex: true`, set `forceIgnoreNoIndex` to enable local index:
         // forceIgnoreNoIndex: true,
-      }),
+      },
     ],
   ],
 
@@ -127,7 +128,7 @@ const config: Config = {
           items: [
             {
               html: `
-                <div style="display: flex; align-items: center; max-width: 100%; gap: 10px;">
+                <div style="display: flex; align-items: center; max-width: 100%; gap: 8px;">
                   <img src="/img/founded-supported.png" alt="European Union Funding Logo" style="max-width: 210px; height: auto;" />
                   <small style="font-size: 0.55em; line-height: 1.2">
                     Funded by the European Union - NextGenerationEU. The views and opinions expressed are solely those of the author(s) and do not 
@@ -141,8 +142,26 @@ const config: Config = {
         },
       ],
       copyright: `
-        Copyright © ${new Date().getFullYear()} SAP SE or an SAP affiliate company. All rights reserved.<br>
-        <small>
+        Copyright © ${new Date().getFullYear()} SAP SE or an SAP affiliate company. <a href="https://www.sap.com/about/legal/copyright.html">All rights reserved</a>.<br>
+        <small style="display: flex; justify-content: center; gap: 20px;">
+          <a class="footer__link-item" href="https://www.sap.com/about/legal/trademark.html">
+            Trademark
+            <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
+              <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg>
+          </a>
+          <a class="footer__link-item" href="https://www.sap.com/about/legal/privacy.html">
+            Privacy Policy 
+            <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
+              <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg>
+          </a>
+          <a class="footer__link-item" href="https://www.sap.com/about/legal/terms-of-use.html">
+            Terms of Use 
+            <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
+              <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
+            </svg>
+          </a>
           <a class="footer__link-item" href="https://www.sap.com/corporate/en/legal/impressum.html">
             Legal Disclosure 
             <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
