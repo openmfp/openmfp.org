@@ -157,7 +157,7 @@ const config: Config = {
           items: [
             {
               html: `
-                <div style="display: flex; align-items: center; max-width: 100%; gap: 8px;">
+                <div style="display: flex; align-items: center; max-width: 100%; gap: 10px;">
                   <img src="/img/founded-supported.png" alt="European Union Funding Logo" style="max-width: 210px; height: auto;" />
                   <small style="font-size: 0.55em; line-height: 1.2">
                     Funded by the European Union - NextGenerationEU. The views and opinions expressed are solely those of the author(s) and do not 
