@@ -128,13 +128,8 @@ const config: Config = {
           items: [
             {
               html: `
-                <div style="display: flex; align-items: center; max-width: 100%; gap: 10px;">
+                <div style="margin-top: -1rem;">
                   <img src="/img/founded-supported.png" alt="European Union Funding Logo" style="max-width: 210px; height: auto;" />
-                  <small style="font-size: 0.55em; line-height: 1.2">
-                    Funded by the European Union - NextGenerationEU. The views and opinions expressed are solely those of the author(s) and do not 
-                    necessarily reflect the views of the European Union or the European Commission. Neither the European Union nor the European 
-                    Commission can be held responsible for them.
-                  </small>
                 </div>
               `,
             },
@@ -142,7 +137,7 @@ const config: Config = {
         },
       ],
       copyright: `Copyright © Linux Foundation Europe. Open Micro Frontend Platform is a project of NeoNephos Foundation. <br> For applicable policies including privacy policy, terms of use and trademark usage guidelines, please see 
-      <a href="https://linuxfoundation.eu">Linux Foundation</a>.<br>`,
+      <a href="https://linuxfoundation.eu">https://linuxfoundation.eu</a>. Linux is a registered trademark of Linus Torvalds.`,
     },
     prism: {
       theme: prismThemes.github,
