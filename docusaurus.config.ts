@@ -2,35 +2,6 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-const legalLinks = [
-  {
-    label: 'Trademark',
-    href: 'https://www.sap.com/about/legal/trademark.html',
-  },
-  {
-    label: 'Privacy Policy',
-    href: 'https://www.sap.com/about/legal/privacy.html',
-  },
-  {
-    label: 'Terms of Use',
-    href: 'https://www.sap.com/about/legal/terms-of-use.html',
-  },
-  {
-    label: 'Legal Disclosure',
-    href: 'https://www.sap.com/corporate/en/legal/impressum.html',
-  },
-];
-function renderLegalLink(label: string, href: string): string {
-  return `
-    <a class="footer__link-item" href="${href}">
-      ${label}
-      <svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU">
-        <path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path>
-      </svg>
-    </a>
-  `;
-}
-
 const config: Config = {
   title: 'OpenMFP',
   tagline: 'Open Micro Frontend Platform',
@@ -170,13 +141,8 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} SAP SE or an SAP affiliate company.
-      <a href="https://www.sap.com/about/legal/copyright.html">All rights reserved</a>.<br>
-      <small class="footer__legal-links">
-        ${legalLinks
-          .map((link) => renderLegalLink(link.label, link.href))
-          .join('')}
-      </small>`,
+      copyright: `Copyright © Linux Foundation Europe. Open Micro Frontend Platform is a project of NeoNephos Foundation. <br> For applicable policies including privacy policy, terms of use and trademark usage guidelines, please see 
+      <a href="https://linuxfoundation.eu">Linux Foundation</a>.<br>`,
     },
     prism: {
       theme: prismThemes.github,
