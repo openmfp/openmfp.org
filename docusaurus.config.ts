@@ -129,7 +129,7 @@ const config: Config = {
             {
               html: `
                 <div style="margin-top: -1rem;">
-                  <img src="/img/founded-supported.png" alt="European Union Funding Logo" style="max-width: 210px; height: auto;" />
+                  <img src="/openmfp.org/img/founded-supported.png" alt="European Union Funding Logo" style="max-width: 210px; height: auto;" />
                 </div>
               `,
             },
