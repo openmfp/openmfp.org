@@ -1,0 +1,73 @@
+# Concepts
+
+The *Open Micro Frontend Platform (OpenMFP)* aims to provide the opinionated, “batteries-included” platform for building portals and complex web-based applications with enterprise qualities.
+
+This documentation provides an overview of OpenMFP's core concepts. For more in-depth details, refer to the upcoming "Architecture" section.
+
+## Extensibility & Micro Frontend Architecture
+
+OpenMFP is designed to be extensible and modular. It is built around the concept of micro frontends, which are small, self-contained applications that can be developed, tested, and deployed independently. 
+
+This allows teams to work on different parts of the application without interfering with each other, and to release updates without affecting the rest of the system.
+
+Extensions are the building blocks of OpenMFP, enabling the platform to acquire additional features. In fact, nearly every feature in OpenMFP is an extension.
+
+The three most common types of extensions in OpenMFP are:
+
+1. **UI-only Micro Frontends** - micro frontends are self-sufficient applications running within another application, also called the “microservices for the frontend”. They allow you to do independent releases, split up applications into smaller chunks, nd support the reuse of shared functionality and infrastructure. OpenMFP uses the [Luigi](https://luigi-project.io/) framework to develop these micro frontends.
+
+    An OpenMFP micro frontend application should be able to work in a “micro frontend” mode, which means it should:
+    * Not show a Header, Footer or sidebar Menu.
+    * It should use the Luigi Client for internal navigation to properly adjust the browser URL on navigate.
+    * It should be able to consume the provided Luigi context and the backend APIs should be able to accept the provided JWT token.
+2. **Micro Frontends with Backend Service Dependencies** - this option combines micro frontend with additional backend services such as Events.
+3. **Service-only Extensions** - Extensions which include only backend services.
+
+:::info
+OpenMFP does not enforce any rules around how to build/deploy Extensions. They must be deployed and life cycled by the owning team.
+:::
+
+## OpenMFP Components Overview
+This section describes the main components of OpenMFP and their functions in the system.
+
+### User
+* Represents an operator or end-user accessing the OpenMFP portal.
+* Initiates authentication to gain access to integrated services.
+
+### Identity Provider
+* A configured OpenID Connect-capable Identity Provider.
+* Responsible for authenticating users and issuing secure tokens.
+* Provides authentication tokens for further interactions with the system.
+* Currently we make use of [Keycloak](https://www.keycloak.org/) for authentication. Keycloak is an open source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
+
+### OpenMFP Portal
+* Acts as the central user interface for accessing the platform.
+* Facilitates authentication by requesting tokens from the Identity Provider.
+* Integrates micro frontends for various services and applications.
+
+### Integrated Service
+* Represents extensions (services or applications) that are configured to work with OpenMFP.
+* Consumed through the OpenMFP portal via micro frontend integration.
+
+![OpenMFP Components Overview](/v0-context.png)
+
+## Planned Features
+
+### Control Plane
+
+The Control Plane will serve as the central point of control for the OpenMFP platform, which will offer an API to manage the platform and its capabilities. The Control Plane will be responsible for managing the lifecycle of the platform, including creating and managing Kubernetes clusters (workspaces), as well as managing users and permissions.
+
+We plan to leverage [kcp](https://www.kcp.io/) (Kubernetes-like Control Plane) so that you can provide your user specific control plane capabilities.
+
+### Authorization
+
+The inclusion of a central ReBAC (Relationship Based Access Control) service addresses the crucial need of having a seamless user and permission management. This service supports the same extensibility and modularity for access control, removing friction in scenarios that span multiple components.
+
+Key benefits include:
+
+- Central authorization management, eliminating the need to maintain access permissions for every capability or service separately.
+- A relationship based model that can be dynamically extended with rules from different parties.
+- An architecture proven to scale effectively in cloud environments.
+
+We aim to provide a central authorization capability, based on [OpenFGA](https://openfga.dev) (which is based on Google’s “Zanzibar” architecture paper).
+

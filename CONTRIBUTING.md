@@ -19,7 +19,7 @@ You are welcome to contribute with your pull requests. These steps explain the c
 > Run the following npm commands from the root of the repository.
 - Install all dependencies: `npm install`
 - Ensure the website builds: `npm run build`
-- Start the website locally: `npm start`
+- Start the website locally: `npm run dev`
 - Make sure your changes render as expected in the browser as expected.
 
 ## Issues
