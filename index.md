@@ -11,8 +11,11 @@ hero:
     alt: 'OpenMFP'
   actions:
     - theme: brand
-      text: Documentation
+      text: Get Started
       link: /documentation/
+    - theme: alt
+      text: GitHub
+      link: https://github.com/openmfp
 
 features:
   - title: Micro Frontend Platform
