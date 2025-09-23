@@ -10,7 +10,7 @@ This Repository contains the OpenMFP Website and Documentation. This website is 
 
 ```sh
 npm install
-npm run start
+npm run dev
 ```
 
 ## Releasing
