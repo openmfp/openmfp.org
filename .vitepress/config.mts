@@ -42,7 +42,7 @@ export default withMermaid({
     ],
 
     editLink: {
-      pattern: 'https://github.com/openmfp/openmfp.org/edit/main/documentation/:path'
+      pattern: 'https://github.com/openmfp/openmfp.org/edit/main/:path'
     },
 
     logo: {
