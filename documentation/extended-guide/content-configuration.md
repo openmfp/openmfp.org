@@ -1,6 +1,3 @@
----
-sidebar_position: 2
----
 # Content Configuration
 
 This document shows you how to create the configuration `content-configuration.json` file for your application.

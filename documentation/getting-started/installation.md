@@ -1,6 +1,3 @@
----
-sidebar_position: 1
----
 # Installation
 We will walk you through the steps to set up a functioning local setup using KIND (Kubernetes IN Docker).
 OpenMFP leverages [Flux](https://fluxcd.io/), a tool designed to keep Kubernetes clusters synchronized with configuration sources, alongside [Kustomize](https://kustomize.io/), a standalone tool for customizing Kubernetes resources. 

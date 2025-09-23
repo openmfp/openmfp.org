@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # Getting Started
 
 This getting started guide is designed for users who want to build their own custom portals using OpenMFP. Whether you're a developer looking to create interactive portals or someone aiming to leverage OpenMFP for streamlined portal creation, this documentation will guide you through the process.

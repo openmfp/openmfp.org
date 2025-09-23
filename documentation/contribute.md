@@ -1,7 +1,3 @@
----
-sidebar_position: 4
----
-
 # Contribute
 
 We’re excited to welcome contributions from the community to help grow and improve **OpenMFP**! Your ideas, feedback, and code are invaluable in shaping a robust platform for building enterprise-grade micro frontend applications. 🌐✨

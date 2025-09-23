@@ -1,7 +1,3 @@
----
-sidebar_position: 5
----
-
 # Community
 
 The OpenMFP community is the heart of our platform's development. We believe in fostering an inclusive, collaborative environment where users, developers, and contributors can work together to improve OpenMFP. Whether you're using OpenMFP, contributing code, or exploring the platform, we encourage you to engage with us.
