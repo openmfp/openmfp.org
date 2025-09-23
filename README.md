@@ -4,7 +4,7 @@
 [![REUSE status](
 https://api.reuse.software/badge/github.com/openmfp/openmfp.org)](https://api.reuse.software/info/github.com/openmfp/openmfp.org)
 
-This Repository contains the OpenMFP Website and Documentation. This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This Repository contains the OpenMFP Website and Documentation. This website is built using [VitePress](https://vitepress.dev/, a modern static website generator.
 
 ## Local Run
 
