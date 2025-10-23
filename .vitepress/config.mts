@@ -68,7 +68,7 @@ export default withMermaid({
             { text: 'Getting Started', link: '/documentation/getting-started/', 
               items: [
                 { text: 'Installation', link: '/documentation/getting-started/installation' },
-                { text: 'Local Development', link: '/documentation/getting-started/local-develpment' },
+                { text: 'Local Development', link: '/documentation/getting-started/local-development' },
                 { text: 'Create a Microfrontend', link: '/documentation/getting-started/create-microfrontend' },
               ] 
             },

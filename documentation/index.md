@@ -6,6 +6,10 @@ The Open Micro Frontend Platform (OpenMFP) key value propositions are the dynami
 OpenMFP is an early preview version, designed to provide a demo environment and showcase the OpenMFP Portal for exploring the platform and offering valuable feedback. Please note that it is not yet complete and is still under active development. Your feedback is essential in helping us refine and improve the platform.
 :::
 
+:::tip Disclaimer
+Some components of OpenMFP are being migrated to [Platform Mesh](https://platform-mesh.io/). It provides an open environment for service providers and consumers to discover, order, and manage services. OpenMFP will continue to focus on being a **Micro Frontend Platform**, supporting UI capability and integrations. Users can expect OpenMFP to evolve independently while certain features may also appear in Platform Mesh.
+:::
+
 ## Why do we Need a Micro Frontend Platform?
 
 Modern cloud environments are inherently complex, consisting of many services, each potentially with its own user interface and technology stack. This diversity introduces several challenges:
