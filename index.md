@@ -29,7 +29,7 @@ features:
     link: /documentation/getting-started/create-microfrontend
   - title: Developer Experience
     details: An intuitive, developer-friendly environment designed to make building Micro Frontends faster, smoother, and more enjoyable.
-    link: /documentation/getting-started/local-develpment
+    link: /documentation/getting-started/local-development
     
 
 ---
