@@ -1,11 +1,20 @@
 # Create a Microfrontend
 
-In this section we are gonna create one simple Microfrontend using angular and integrate it into the OpenMFP Portal.
+In this section we are gonna create one simple Microfrontend using angular and integrate it into the Portal.
 
 This is juts a simple example, you can use any other framework or technology to create your Microfrontend. If you already have one created you can skip the First part of this guide and jump to the [Step 3](#step-3-create-a-content-configuration-file).
 
+## Portal
+
+The Portal is a web application built with Angular and TypeScript. It enables seamless integration of your micro frontends and provides an interface to interact with them.
+
+Micro frontends are self-sufficient applications running inside of another application, also called the “microservices for the frontend”. They allow for independent releases, modularization, and the reuse of shared functionality and infrastructure.
+
+The OpenMFP Portal leverages the [Luigi](https://luigi-project.io/) Framework to integrate all your micro frontends into a single, unified entry point.
+
 ## Prerequisites
 - [Node.js](https://nodejs.org/en/download/) active LTS or maintenance LTS version.
+- Locally running Portal, if you don't have one follow [Installation guide](/documentation/getting-started/installation)
 - npm (included with Node.js)
 - [Angular CLI](https://angular.io/cli) installed globally. If you don't have it installed, you can do so by running:
 ```sh
@@ -79,10 +88,8 @@ Go to the user button located in the top-right corner and navigate to **Settings
 
 There, you will find the Local Development Mode. Activate **Is Development Mode Active** and enter the content configuration file path in the input field.
 
-![Local Development Mode in the OpenMFP Portal](/local-dev-setup.png)
+![Local Development Mode in the OpenMFP Portal](/settings.png)
 
 Click **Add** and then **Save**, and your Microfrontend should appear in the OpenMFP Portal.
 
 ![My Microfrontend in the OpenMFP Portal](/my-microfrontend-global.png)
-
-
