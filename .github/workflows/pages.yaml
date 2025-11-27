@@ -44,9 +44,7 @@ jobs:
       - id: set-version
         name: Set documentation version
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "version=main" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.ref }}" == refs/heads/release-* ]]; then
+          if [[ "${{ github.ref }}" == refs/heads/release-* ]]; then
             echo "version=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
           else
             echo "version=" >> $GITHUB_OUTPUT
