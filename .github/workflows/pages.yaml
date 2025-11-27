@@ -1,0 +1,75 @@
+name: pages
+
+on:
+  push:
+    branches:
+      - main
+      - 'release-*'  # Support version branches
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+  workflow_dispatch:
+
+permissions:
+  contents: write # to write the built page to the branch
+  pull-requests: write # to leave a comment with the preview URL
+
+concurrency:
+  # set separate concurrency groups for each version branch and PR
+  group: ${{ github.event_name == 'pull_request' && format('pages-preview-{0}', github.event.pull_request.number) || format('pages-{0}', github.ref_name) }}
+  cancel-in-progress: false
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - id: configure
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+
+      # Extract version from branch name for versioned deployments
+      - id: set-version
+        name: Set documentation version
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "version=main" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == refs/heads/release-* ]]; then
+            echo "version=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+          else
+            echo "version=" >> $GITHUB_OUTPUT
+          fi
+
+      - run: npm ci
+      - run: npm run build
+        env:
+          DOCS_VERSION: ${{ steps.set-version.outputs.version }}
+          PAGES_BASE: ${{ github.event_name == 'pull_request' && format('pr-preview/pr-{0}', github.event.pull_request.number) || '' }}
+
+      # deploy the PR to a preview URL
+      - uses: rossjrw/pr-preview-action@8ff09e486b4c23709012eedd3b42e9f0b95dd0c5 # v1
+        if: ${{ github.event_name == 'pull_request' && !github.event.pull_request.head.repo.fork }}
+        with:
+          source-dir: .vitepress/dist
+
+      # deploy the build to GitHub Pages
+      - uses: JamesIves/github-pages-deploy-action@4a3abc783e1a24aeb44c16e869ad83caf6b4cc23 # v4
+        if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' }}
+        with:
+          folder: .vitepress/dist
+          branch: gh-pages
+          target-folder: ${{ steps.set-version.outputs.version }}
+          clean-exclude: pr-preview
+          force: false
