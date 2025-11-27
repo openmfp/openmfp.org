@@ -8,11 +8,13 @@ export default withMermaid({
   head: [["link", { rel: "icon", href: "favicon.ico" }]],
   ignoreDeadLinks: "localhostLinks",
   cleanUrls: true,
-  base:
-    "PAGES_BASE" in process.env && process.env.PAGES_BASE != ""
-      ? "/" + process.env.PAGES_BASE
-      : "",
-  srcExclude: ["**/README.md", "**/CONTRIBUTING.md"],
+  base: 'DOCS_VERSION' in process.env && process.env.DOCS_VERSION != ''
+    ? '/' + process.env.DOCS_VERSION + '/'
+    : ('PAGES_BASE' in process.env && process.env.PAGES_BASE != ''
+    ? '/' + process.env.PAGES_BASE + '/'
+    : '/'),
+
+  srcExclude: ['**/README.md', '**/CONTRIBUTING.md'],
   lastUpdated: true,
 
   vite: {
