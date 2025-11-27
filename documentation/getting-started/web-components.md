@@ -83,7 +83,7 @@ npx http-server . -p 4400 --cors
 Make sure `http://localhost:4400/component.js` and `http://localhost:4400/content-configuration.json` both open in the browser.
 
 ## Step 5: Load the configuration in the Portal
-[Repeat step form Create Microfrontend guide](create-microfrontend#step-5-consuming-local-content-configuration)
+[Repeat step from Create Microfrontend guide](create-microfrontend#step-5-consuming-local-content-configuration)
 1. Open the Portal UI and select the avatar menu in the top-right corner.
 2. Navigate to **Settings → Development**.
 3. Enable **Is Development Mode Active** and paste the URL to your `content-configuration.json`.
