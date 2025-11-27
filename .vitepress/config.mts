@@ -87,16 +87,26 @@ export default withMermaid({
               link: "/documentation/extended-guide/",
               items: [
                 {
-                  text: "Registering a Service Provider",
-                  link: "/documentation/extended-guide/service-provider",
-                },
-                {
-                  text: "Adding portal context provider",
-                  link: "/documentation/extended-guide/portal-context-provider",
-                },
-                {
-                  text: "Adding entity context providers",
-                  link: "/documentation/extended-guide/entity-context-providers",
+                  text: "Backend configuration",
+                  link: "/documentation/extended-guide/backend-configuration/",
+                  items: [
+                    {
+                      text: "Registering a Service Provider",
+                      link: "/documentation/extended-guide/backend-configuration/service-provider",
+                    },
+                    {
+                      text: "Adding portal context provider",
+                      link: "/documentation/extended-guide/backend-configuration/portal-context-provider",
+                    },
+                    {
+                      text: "Adding entity context providers",
+                      link: "/documentation/extended-guide/backend-configuration/entity-context-providers",
+                    },
+                    {
+                      text: "Serving static content",
+                      link: "/documentation/extended-guide/backend-configuration/serving-static-content",
+                    },
+                  ],
                 },
                 {
                   text: "Registering a Microfrontend",

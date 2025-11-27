@@ -1,6 +1,6 @@
 # Adding portal context providers
 
-To provide additional data or configuration to integrated micro frontends, 
+To provide additional data or configuration to integrated micro frontends via luigi context, 
 you can add a service that implements the `PortalContextProvider` interface.
 
 ## PortalContextProvider Interface
