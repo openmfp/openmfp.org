@@ -10,7 +10,12 @@ export default withMermaid({
   ],
   ignoreDeadLinks: 'localhostLinks',
   cleanUrls: true,
-  base: 'PAGES_BASE' in process.env && process.env.PAGES_BASE != '' ? '/' + process.env.PAGES_BASE : '',
+  base: 'DOCS_VERSION' in process.env && process.env.DOCS_VERSION != ''
+    ? '/' + process.env.DOCS_VERSION + '/'
+    : ('PAGES_BASE' in process.env && process.env.PAGES_BASE != ''
+    ? '/' + process.env.PAGES_BASE + '/'
+    : '/'),
+
   srcExclude: ['**/README.md', '**/CONTRIBUTING.md'],
   lastUpdated: true,
 
