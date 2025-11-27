@@ -91,4 +91,4 @@ There, you will find the Local Development Mode. Activate **Is Development Mode 
 
 Click **Add** and then **Save**, and your Microfrontend should appear in the OpenMFP Portal.
 
-![My Microfrontend in the OpenMFP Portal](/my-microfrontend-global.png)
+![My Microfrontend in the OpenMFP Portal](/my-microfrontend.png)
