@@ -91,6 +91,10 @@ export default withMermaid({
                   link: "/documentation/extended-guide/service-provider",
                 },
                 {
+                  text: "Adding entity context providers",
+                  link: "/documentation/extended-guide/entity-context-providers",
+                },
+                {
                   text: "Registering a Microfrontend",
                   link: "/documentation/extended-guide/register-microfrontend",
                 },

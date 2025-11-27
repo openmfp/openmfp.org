@@ -18,7 +18,7 @@ export interface ServiceProviderService {
 }
 ```
 
-The `getServiceProviders` method is called by the application and receives the following parameters:
+The `getServiceProviders` method is called by the application during configuration retrieval (`/rest/config` or `/rest/config/:entity` call) and receives the following parameters:
 * `token`: the id token of the logged user.
 * `entities`: the list of entities for which the user will retrieve configuration data.
 * `context`: the context of the application containing the incoming request query parameters.
