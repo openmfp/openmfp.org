@@ -8,13 +8,14 @@ export default withMermaid({
   head: [["link", { rel: "icon", href: "favicon.ico" }]],
   ignoreDeadLinks: "localhostLinks",
   cleanUrls: true,
-  base: 'DOCS_VERSION' in process.env && process.env.DOCS_VERSION != ''
-    ? '/' + process.env.DOCS_VERSION + '/'
-    : ('PAGES_BASE' in process.env && process.env.PAGES_BASE != ''
-    ? '/' + process.env.PAGES_BASE + '/'
-    : '/'),
+  base:
+    "DOCS_VERSION" in process.env && process.env.DOCS_VERSION != ""
+      ? "/" + process.env.DOCS_VERSION + "/"
+      : "PAGES_BASE" in process.env && process.env.PAGES_BASE != ""
+        ? "/" + process.env.PAGES_BASE + "/"
+        : "/",
 
-  srcExclude: ['**/README.md', '**/CONTRIBUTING.md'],
+  srcExclude: ["**/README.md", "**/CONTRIBUTING.md"],
   lastUpdated: true,
 
   vite: {
@@ -107,6 +108,10 @@ export default withMermaid({
                     {
                       text: "Serving static content",
                       link: "/documentation/extended-guide/backend-configuration/serving-static-content",
+                    },
+                    {
+                      text: "Health checker",
+                      link: "/documentation/extended-guide/backend-configuration/health-checker",
                     },
                   ],
                 },
