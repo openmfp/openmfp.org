@@ -20,7 +20,22 @@ The `getContextValues` method is called by the application during configuration 
 * `token`: the id token of the logged user.
 * `context`: the context of the application containing the incoming request query parameters.
 
-The return value is available afterward in the Micro frontends in the luigi context under the property `entityContext`.
+The return value is available afterward in the micro frontends in the [luigi context](https://github.com/openmfp/portal-ui-lib/blob/main/docs/readme-luigi-context.md) under the property `entityContext`.
+
+```json
+{
+  "entityContext": {
+    "project": {
+      "id": 5,
+      "data": ["red", "green", "blue"]
+    },
+    "team": {
+      "id": 113,
+      "group": "internal"
+    }
+  }
+}
+```
 
 ## Provide your implemented service to the portal options
 

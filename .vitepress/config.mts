@@ -91,6 +91,10 @@ export default withMermaid({
                   link: "/documentation/extended-guide/service-provider",
                 },
                 {
+                  text: "Adding portal context provider",
+                  link: "/documentation/extended-guide/portal-context-provider",
+                },
+                {
                   text: "Adding entity context providers",
                   link: "/documentation/extended-guide/entity-context-providers",
                 },
