@@ -49,7 +49,7 @@ ng serve
 Then open your browser and go to: http://localhost:4200/
 
 ## Step 3: Create a Content Configuration File
-Create a new file called `content-configuration.json` in the `src/assets` folder of your Angular project or any path that will serve this file.
+Create a new file called `content-configuration.json` in the `public` folder of your Angular project or any path that will serve this file.
 This file will contain the configuration for your Microfrontend.
 
 The following is an example of very minimal content configuration file. The contents of this file are described in great detail at [Configuration Documentation](https://github.com/openmfp/portal-ui-lib/blob/main/docs/readme-nodes-configuration.md#the-content-configuration-file-contents).
@@ -61,15 +61,14 @@ The following is an example of very minimal content configuration file. The cont
     "data": {
       "nodes": [
         {
-          "pathSegment": "ur-path-segment", // This is used to build the path in the browser URL.
-          "label": "My Microfrontend", // The name of the node which will be visible on your page.
-          "hideFromNav": false, // Shows or hides a navigation node. You can still navigate to the node but it does not show up in the top or left pane.
-          "url": "http://localhost:4200/index.html", // The URL of the micro frontend. This is the URL that will be displayed in the main content area of your page (This is only required for the local development). 
-          "urlSuffix": "/index.html", // The url suffix of the micro frontend which will be displayed in the main content area of your page.
-          "icon": "folder", // The name of an icon from the [OpenUI5](https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html) or a custom link.
-          "entityType": "global", // the place in the OpenMFP where the micro frontend will be displayed.
+          "pathSegment": "ur-path-segment",
+          "label": "My Microfrontend",
+          "hideFromNav": false,
+          "url": "http://localhost:4200/index.html",
+          "urlSuffix": "/index.html",
+          "entityType": "example",
           "loadingIndicator": {
-            "enabled": false // Shows or hides a loading indicator when navigating to the node, if you micro frontend does not have a Luigi Client then it should be set to false.
+            "enabled": false
           }
         }
       ]
