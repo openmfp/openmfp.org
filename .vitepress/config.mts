@@ -121,6 +121,10 @@ export default withMermaid({
                       text: "Extending portal",
                       link: "/documentation/extended-guide/backend-configuration/extending-portal",
                     },
+                    {
+                      text: "Authentication configuration",
+                      link: "/documentation/extended-guide/backend-configuration/auth-config",
+                    },
                   ],
                 },
                 {
