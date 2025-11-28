@@ -28,7 +28,8 @@ const template = document.createElement('template')
 template.innerHTML = `
   <style>
     :host {
-      display: block;
+      display: flex;
+      justify-content: center;
       font-family: sans-serif;
       padding: 24px;
     }
