@@ -117,6 +117,10 @@ export default withMermaid({
                       text: "Health checker",
                       link: "/documentation/extended-guide/backend-configuration/health-checker",
                     },
+                    {
+                      text: "Extending portal",
+                      link: "/documentation/extended-guide/backend-configuration/extending-portal",
+                    },
                   ],
                 },
                 {
