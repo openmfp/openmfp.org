@@ -94,7 +94,7 @@ export default withMermaid({
                   link: "/documentation/extended-guide/backend-configuration/",
                   items: [
                     {
-                      text: "Registering a Service Provider",
+                      text: "Registering a service provider",
                       link: "/documentation/extended-guide/backend-configuration/service-provider",
                     },
                     {
@@ -104,6 +104,10 @@ export default withMermaid({
                     {
                       text: "Adding entity context providers",
                       link: "/documentation/extended-guide/backend-configuration/entity-context-providers",
+                    },
+                    {
+                      text: "Passing additional env variables to the portal",
+                      link: "/documentation/extended-guide/backend-configuration/env-variables-provider",
                     },
                     {
                       text: "Serving static content",
