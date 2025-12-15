@@ -128,6 +128,16 @@ export default withMermaid({
                   ],
                 },
                 {
+                  text: "Frontend configuration",
+                  link: "/documentation/extended-guide/frontend-configuration/",
+                  items: [
+                    {
+                      text: "Luigi general settings",
+                      link: "/documentation/extended-guide/frontend-configuration/general-settings",
+                    },
+                  ],
+                },
+                {
                   text: "Registering a Microfrontend",
                   link: "/documentation/extended-guide/register-microfrontend",
                 },
