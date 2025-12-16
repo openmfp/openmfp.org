@@ -135,6 +135,10 @@ export default withMermaid({
                       text: "Luigi general settings",
                       link: "/documentation/extended-guide/frontend-configuration/general-settings",
                     },
+                    {
+                      text: "Luigi routing settings",
+                      link: "/documentation/extended-guide/frontend-configuration/routing-settings",
+                    },
                   ],
                 },
                 {

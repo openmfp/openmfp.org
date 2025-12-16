@@ -1,9 +1,10 @@
-# General UI Settings
+# Customizing Static Luigi Settings
 
-The health checker is an optional service that can be provided to the portal. Once added
-will be called periodically with an interval defined in the environment variable `HEALTH_CHECK_INTERVAL` ms
-(default 2000 in case not set). The result of the call is accessed via rest call `/rest/health`
-and throws an error if the result is false.
+To customize the general UI settings provided by the underlying Luigi framework, 
+you must implement the `StaticSettingsConfigService` interface and provide your custom service 
+during the application bootstrap. This service allows you to override any default 
+[Luigi general settings](https://docs.luigi-project.io/docs/general-settings) 
+(like the header title, logo, or loading behavior).
 
 ## StaticSettingsConfigService Interface
 
@@ -15,11 +16,7 @@ export interface StaticSettingsConfigService {
 }
 ```
 
-## Provide your implemented service to the portal options
-
-Via implementing the interface and providing as a porta option,
-you can customize [Luigis general settings](https://docs.luigi-project.io/docs/general-settings) and override any defaults.
-Make sure to return a valid Luigi configuration object, below an example:
+## Provide your implemented service
 
 ```ts
 import { StaticSettingsConfigService } from '@openmfp/portal-ui-lib';
@@ -29,7 +26,7 @@ export class StaticSettingsConfigServiceImpl
 {
   constructor() {}
 
-  getStaticSettingsConfig() {
+  getStaticSettingsConfig(): Promise<LuigiStaticSettings> {
     const logo = 'assets/my-logo.svg';
 
     return {
@@ -48,7 +45,7 @@ export class StaticSettingsConfigServiceImpl
 }
 ```
 
-## Provide your implemented service to the portal options
+## Registering the service during application bootstrap
 
 ```ts
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -57,8 +54,10 @@ import {
     PortalOptions,
     providePortal,
 } from '@openmfp/portal-ui-lib';
+import { StaticSettingsConfigServiceImpl } from './static-settings-config.service'; // Import your new service
 
 const portalOptions: PortalOptions = {
+    // Reference the service class here. The Portal UI Library will instantiate it.
     staticSettingsConfigService: StaticSettingsConfigServiceImpl,
 };
 
