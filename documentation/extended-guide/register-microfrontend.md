@@ -1,6 +1,7 @@
 # Registering a Microfrontend in OpenMFP
 
-You can register a micro frontend in the OpenMFP Portal to integrate it permanently into your portal. This guide walks you through the process of registering a micro frontend.
+You can register a micro frontend in the OpenMFP Portal to integrate it permanently into your portal. 
+This guide walks you through the process of registering a micro frontend.
 
 ## Steps to Register a Microfrontend
 
