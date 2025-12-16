@@ -32,10 +32,8 @@ export class CustomRoutingConfigService implements RoutingConfigService {
     getInitialRoutingConfig(): any {
         return {
             useHashRouting: false,
-            showModalPathInUrl: false,
+            showModalPathInUrl: true,
             modalPathParam: 'modalPathParamDisabled',
-            skipRoutingForUrlPatterns: [/.*/],
-            pageNotFoundHandler: () => {},
         };
     }
 
@@ -44,15 +42,13 @@ export class CustomRoutingConfigService implements RoutingConfigService {
      */
     getRoutingConfig(): any {
         return {
-            useHashRouting: false,
-            showModalPathInUrl: true,
-            modalPathParam: 'modal',
+            useHashRouting: true,
             pageNotFoundHandler: (
                 notFoundPath: string,
                 isAnyPathMatched: boolean,
             ) => {
                 return {
-                    redirectTo: 'error/404',
+                    redirectTo: 'handle-error/404',
                     keepURL: true,
                 };
             },
