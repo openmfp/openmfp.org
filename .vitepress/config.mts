@@ -139,11 +139,11 @@ export default withMermaid({
                       text: "Luigi routing settings",
                       link: "/documentation/extended-guide/frontend-configuration/routing-settings",
                     },
+                    {
+                      text: "Custom message listeners",
+                      link: "/documentation/extended-guide/frontend-configuration/message-listeners",
+                    },
                   ],
-                },
-                {
-                  text: "Registering a Microfrontend",
-                  link: "/documentation/extended-guide/register-microfrontend",
                 },
                 {
                   text: "Content Configuration",
