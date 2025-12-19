@@ -140,6 +140,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/routing-settings",
                     },
                     {
+                      text: "Global search settings",
+                      link: "/documentation/extended-guide/frontend-configuration/global-search-settings",
+                    },
+                    {
                       text: "Custom message listeners",
                       link: "/documentation/extended-guide/frontend-configuration/message-listeners",
                     },
