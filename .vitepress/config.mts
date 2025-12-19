@@ -148,6 +148,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/luigi-global-context",
                     },
                     {
+                      text: "Global nodes",
+                      link: "/documentation/extended-guide/frontend-configuration/global-nodes",
+                    },
+                    {
                       text: "Custom message listeners",
                       link: "/documentation/extended-guide/frontend-configuration/message-listeners",
                     },
