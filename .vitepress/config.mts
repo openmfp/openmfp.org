@@ -8,13 +8,14 @@ export default withMermaid({
   head: [["link", { rel: "icon", href: "favicon.ico" }]],
   ignoreDeadLinks: "localhostLinks",
   cleanUrls: true,
-  base: 'DOCS_VERSION' in process.env && process.env.DOCS_VERSION != ''
-    ? '/' + process.env.DOCS_VERSION + '/'
-    : ('PAGES_BASE' in process.env && process.env.PAGES_BASE != ''
-    ? '/' + process.env.PAGES_BASE + '/'
-    : '/'),
+  base:
+    "DOCS_VERSION" in process.env && process.env.DOCS_VERSION != ""
+      ? "/" + process.env.DOCS_VERSION + "/"
+      : "PAGES_BASE" in process.env && process.env.PAGES_BASE != ""
+        ? "/" + process.env.PAGES_BASE + "/"
+        : "/",
 
-  srcExclude: ['**/README.md', '**/CONTRIBUTING.md'],
+  srcExclude: ["**/README.md", "**/CONTRIBUTING.md"],
   lastUpdated: true,
 
   vite: {
@@ -23,13 +24,13 @@ export default withMermaid({
         {
           find: /^.*\/VPFooter\.vue$/,
           replacement: fileURLToPath(
-            new URL("theme/components/VPFooter.vue", import.meta.url)
+            new URL("theme/components/VPFooter.vue", import.meta.url),
           ),
         },
         {
           find: /^.*\/VPFeature\.vue$/,
           replacement: fileURLToPath(
-            new URL("theme/components/VPFeature.vue", import.meta.url)
+            new URL("theme/components/VPFeature.vue", import.meta.url),
           ),
         },
       ],
@@ -88,6 +89,44 @@ export default withMermaid({
               text: "Extended Guide",
               link: "/documentation/extended-guide/",
               items: [
+                {
+                  text: "Backend configuration",
+                  link: "/documentation/extended-guide/backend-configuration/",
+                  items: [
+                    {
+                      text: "Registering a service provider",
+                      link: "/documentation/extended-guide/backend-configuration/service-provider",
+                    },
+                    {
+                      text: "Adding portal context provider",
+                      link: "/documentation/extended-guide/backend-configuration/portal-context-provider",
+                    },
+                    {
+                      text: "Adding entity context providers",
+                      link: "/documentation/extended-guide/backend-configuration/entity-context-providers",
+                    },
+                    {
+                      text: "Passing additional env variables to the portal",
+                      link: "/documentation/extended-guide/backend-configuration/env-variables-provider",
+                    },
+                    {
+                      text: "Serving static content",
+                      link: "/documentation/extended-guide/backend-configuration/serving-static-content",
+                    },
+                    {
+                      text: "Health checker",
+                      link: "/documentation/extended-guide/backend-configuration/health-checker",
+                    },
+                    {
+                      text: "Extending portal",
+                      link: "/documentation/extended-guide/backend-configuration/extending-portal",
+                    },
+                    {
+                      text: "Authentication configuration",
+                      link: "/documentation/extended-guide/backend-configuration/auth-config",
+                    },
+                  ],
+                },
                 {
                   text: "Registering a Microfrontend",
                   link: "/documentation/extended-guide/register-microfrontend",
