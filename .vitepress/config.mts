@@ -128,8 +128,50 @@ export default withMermaid({
                   ],
                 },
                 {
-                  text: "Registering a Microfrontend",
-                  link: "/documentation/extended-guide/register-microfrontend",
+                  text: "Frontend configuration",
+                  link: "/documentation/extended-guide/frontend-configuration/",
+                  items: [
+                    {
+                      text: "Luigi general settings",
+                      link: "/documentation/extended-guide/frontend-configuration/general-settings",
+                    },
+                    {
+                      text: "Luigi routing settings",
+                      link: "/documentation/extended-guide/frontend-configuration/routing-settings",
+                    },
+                    {
+                      text: "Global search settings",
+                      link: "/documentation/extended-guide/frontend-configuration/global-search-settings",
+                    },
+                    {
+                      text: "Header bar settings",
+                      link: "/documentation/extended-guide/frontend-configuration/header-bar-settings",
+                    },
+                    {
+                      text: "User profile settings",
+                      link: "/documentation/extended-guide/frontend-configuration/user-profile-settings",
+                    },
+                    {
+                      text: "Custom message listeners",
+                      link: "/documentation/extended-guide/frontend-configuration/message-listeners",
+                    },
+                    {
+                      text: "Error component config",
+                      link: "/documentation/extended-guide/frontend-configuration/error-config",
+                    },
+                    {
+                      text: "Authorization events",
+                      link: "/documentation/extended-guide/frontend-configuration/luigi-auth-callbacks-settings",
+                    },
+                    {
+                      text: "Luigi global context",
+                      link: "/documentation/extended-guide/frontend-configuration/luigi-global-context",
+                    },
+                    {
+                      text: "Global nodes",
+                      link: "/documentation/extended-guide/frontend-configuration/global-nodes",
+                    },
+                  ],
                 },
                 {
                   text: "Content Configuration",
