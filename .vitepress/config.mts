@@ -152,6 +152,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/user-profile-settings",
                     },
                     {
+                      text: "Authorization events",
+                      link: "/documentation/extended-guide/frontend-configuration/luigi-auth-callbacks-settings",
+                    },
+                    {
                       text: "Luigi global context",
                       link: "/documentation/extended-guide/frontend-configuration/luigi-global-context",
                     },
