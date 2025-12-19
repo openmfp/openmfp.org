@@ -1,5 +1,5 @@
-import { withMermaid } from "vitepress-plugin-mermaid";
 import { fileURLToPath, URL } from "node:url";
+import { withMermaid } from "vitepress-plugin-mermaid";
 
 // https://vitepress.dev/reference/site-config
 export default withMermaid({
@@ -76,12 +76,12 @@ export default withMermaid({
                   link: "/documentation/getting-started/installation",
                 },
                 {
-                  text: "Local Development",
-                  link: "/documentation/getting-started/local-development",
-                },
-                {
                   text: "Create a Microfrontend",
                   link: "/documentation/getting-started/create-microfrontend",
+                },
+                {
+                  text: "Web Components",
+                  link: "/documentation/getting-started/web-components",
                 },
               ],
             },
