@@ -1,135 +1,74 @@
 # Installation
-We will walk you through the steps to set up a functioning local setup using KIND (Kubernetes IN Docker).
-OpenMFP leverages [Flux](https://fluxcd.io/), a tool designed to keep Kubernetes clusters synchronized with configuration sources, alongside [Kustomize](https://kustomize.io/), a standalone tool for customizing Kubernetes resources. 
-Together, these tools enable efficient and automated cluster management.
+This guide walks through how to get started creating your very own OpenMFP Portal.
 
-We will configure Flux to install, test and upgrade a demo app using
-`OCIRepository` and `HelmRelease` custom resources.
-Flux will monitor the Helm repository, and it will automatically
-upgrade the Helm releases to their latest chart version based on semver ranges.
+##  Summary
+We will walk you through the steps to set up your very own portal. By the end of this guide, you will have a standalone Portal running locally. To be clear, this is not a production-ready installation, and it does not contain information specific to your needs.
 
-By the end, you'll have a working setup ready to explore the full potential of OpenMFP while managing your cluster efficiently.
+:::info Contributors
+If you are planning to contribute a new feature or bug fix to the OpenMFP project, we advise you to follow the Contributors guide.
+:::
 
-## Prerequisites  
+## Prerequisites
 
-1. **Container Runtime**  
-   Install either [Docker](https://www.docker.com) or [Podman](https://podman.io) to run the kind cluster:  
-   - **Docker**: Version `27.0.0` or higher. Installation Guide [Get Docker](https://docs.docker.com/get-docker/)  
-   - **Podman**: Version `5.1.0` or higher. Installation Guide [Install Podman](https://podman.io/get-started)  
-   Ensure Docker or Podman is configured to use at least 12GB of memory.
+This guide also assumes that you have some experience with the terminal, specifically, these commands: `npm`, `npx`.
 
-   For Podman you will need to run:
-   ```sh
-   podman machine stop
-   podman machine init --rootful --memory=12240
-   podman machine start
-   ```
+- [Node.js](https://nodejs.org/en) installed using one of these
+  methods:
+  - Using `nvm` (recommended)
+    - [Installing nvm](https://github.com/nvm-sh/nvm#install--update-script)
+    - [Install and change Node version with nvm](https://nodejs.org/en/download/package-manager/#nvm)
+    - Node 24 is a good starting point, this can be installed using `nvm install 24`
+  - [Binary Download](https://nodejs.org/en/download/)
+  - [Package manager](https://nodejs.org/en/download/package-manager/)
+  - [Using NodeSource packages](https://github.com/nodesource/distributions/blob/master/README.md)
 
-    For Docker you will need to go to Docker Desktop -> Settings -> Resources -> Advanced and set the memory to 12GB.
+## Create your Portal
+Once the prerequisites are in place, follow these steps to set up your Portal:
 
-2. **Kind (Kubernetes IN Docker)**  
-   To set up a local Kubernetes cluster, use [Kind](https://kind.sigs.k8s.io/). Follow the [Kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide for more details. For macOS Installation via [Homebrew](https://brew.sh/) run:
-    ```sh
-    brew install kind
-    ```
+To install the Portal, we will make use of `npx`. `npx` is a tool that comes preinstalled with Node.js and lets you run commands straight from `npm` or other registries. Before we run the command, let's discuss what it does.
 
-3. **Helm**  
-   [Helm](https://helm.sh/) is required to bootstrap Flux. You can find detailed installation instructions [here](https://helm.sh/docs/intro/install/). For macOS Installation via Homebrew run:
-    ```sh
-    brew install helm
-    ```
+This command will:
+ - create a new directory with a Portal inside.
+ - Generate all necessary configuration file
+ - Set up frontend and backend structures
+ - Display the complete project structure
+ - Install all dependencies automatically
 
-4. **Kubectl**  
-   [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is the Kubernetes command-line tool. You can install it using the following command:
-    ```sh
-    brew install kubectl
-    ```
-    For more installation options, refer to the [Kubectl Installation Guide](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
-
-5. **GitHub setup**  
-    Set `GH_USER` or install the [GitHub CLI](https://cli.github.com/) to setup your environment for Flux:  
-    - Specify your GitHub username by setting the `GH_USER` environment variable:  
-        ```sh
-        export GH_USER=<your-github-username>
-        ```  
-    - Alternatively, install the GitHub CLI For macOS Installation via Homebrew run:
-        ```sh
-        brew install gh
-        ```
-
-    Set a GitHub token to enable pulling OpenMFP Docker images, this token should have the `read:packages` scope.
-    ```sh
-    export GH_TOKEN=<your-github-token>
-    ```
-
-6. **Keycloak (Authentication Setup - Optional)**  
-   You only need this step if you plan to use your own [Keycloak](https://www.keycloak.org/) instance. If not, a default Keycloak will be installed automatically during the setup process.
-   To use your own Keycloak, set up the client secret as an environment variable:  
-   ```sh
-   export KEYCLOAK_SECRET=<keycloak-client-secret>
-
-7. **Free Port 8000**  
-   The local OpenMFP portal will use port `8000`. Ensure this port is not in use by another application before proceeding.  
-   - On Linux/macOS, you can check and free the port with the following commands:
-    ```sh
-    lsof -i :8000
-    kill -9 <PID> # Replace <PID> with the process ID using the port
-    ```
-
-## Bootstrap local environment
-Once the prerequisites are in place, follow these steps to set up the local environment:
-
-1.  **Clone the OpenMFP Repository**  
-    Start by cloning the OpenMFP Helm charts repository:
-
-    ```sh
-    git clone https://github.com/openmfp/helm-charts
-    cd helm-charts
-    ```
-
-2.  **Run the Bootstrap Script**  
-    The repository includes a script `local-setup/scripts/start.sh`, it contains all steps needed to bootstrap the local environment. 
-    The script will take some time and it automate the following steps:
-    - Create kind cluster called `openmfp`
-    - Install flux
-    - Prepare secrets
-    - Apply flux deployment configuration
-
-    To start the bootstrapping and local installation, run the following command:
-    ```sh
-    ./local-setup/scripts/start.sh
-    ```
-
-3. **Access the Local Environment**  
-Once the bootstrap process finishes, you can access the local Demo OpenMFP Portal at: http://localhost:8000
-
-## Remove the Cluster
-
-If you want to delete the local environment and remove the KIND cluster, run the following command:
-
-```sh
-kind delete cluster --name openmfp
-```
-If the deletion is stuck validate that the container runtime (Docker or Podman) is started and running.
-
-## Troubleshooting
-
-If the bootstrap script does not successfully finish, connect to the `kind-openmfp` cluster, take the following steps to investigate:
-
-1. Verify the cluster is running and accessible:
-```sh
-kubectl cluster-info --context kind-openmfp
+```bash
+npx @openmfp/create-portal@latest
 ```
 
-2. Identify any pods that are not in the `Running` status:
-```sh
-kubectl get pods --all-namespaces | grep -v Running
+Also you can provide a name to your portal by passing it as argument.
+
+```bash
+npx @openmfp/create-portal@latest my-awesome-portal
 ```
 
-3. For pods that are stuck or failing, inspect the events for more details:
-```sh
-kubectl describe pod <pod-name> -n <namespace>
-```
-Review the `Events` section in the output to pinpoint and address the underlying issue.
+This name will be used as subdirectory in your current working directory.
 
-4. If the issue is related to memory constraints, increase the memory allocation for Docker or Podman as described in the Prerequisites section.
+:::info
+If you face any issue with this tool you can visit troubleshoot section in [github](https://github.com/openmfp/create-portal?tab=readme-ov-file#troubleshooting)
+:::
+
+## 2. Run the Portal
+
+Your Portal is fully installed and ready to be run! Now that the installation is complete, you can go to the application directory and start the app using the `npm start` command. The `npm start` command will run both the frontend and backend as separate processes in the same terminal.
+
+```bash
+cd my-portal # your app name
+npm start
+```
+
+![Screenshot of the command output](/npm-start.png)
+
+Then you can visit `localhost:4300` to start exploring Portal immediately.
+
+![Screenshot of the running Portal](/portal.png)
+
+## Recap
+
+This tutorial walked through how to create your own Portal using the `npx @openmfp/create-portal@latest` command. That command created a new directory that holds your new Portal.
+
+### Create a Microfrontend  
+
+Now when you have your portal running locally, you can create a new micro frontend and connect it to your portal. Follow the steps in the [Create Microfrontend Guide](/documentation/getting-started/create-microfrontend).
