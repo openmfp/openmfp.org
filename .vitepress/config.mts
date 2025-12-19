@@ -144,6 +144,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/global-search-settings",
                     },
                     {
+                      text: "Header bar settings",
+                      link: "/documentation/extended-guide/frontend-configuration/header-bar-settings",
+                    },
+                    {
                       text: "User profile settings",
                       link: "/documentation/extended-guide/frontend-configuration/user-profile-settings",
                     },
