@@ -152,6 +152,14 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/user-profile-settings",
                     },
                     {
+                      text: "Custom message listeners",
+                      link: "/documentation/extended-guide/frontend-configuration/message-listeners",
+                    },
+                    {
+                      text: "Error component config",
+                      link: "/documentation/extended-guide/frontend-configuration/error-config",
+                    },
+                    {
                       text: "Authorization events",
                       link: "/documentation/extended-guide/frontend-configuration/luigi-auth-callbacks-settings",
                     },
@@ -162,10 +170,6 @@ export default withMermaid({
                     {
                       text: "Global nodes",
                       link: "/documentation/extended-guide/frontend-configuration/global-nodes",
-                    },
-                    {
-                      text: "Custom message listeners",
-                      link: "/documentation/extended-guide/frontend-configuration/message-listeners",
                     },
                   ],
                 },
