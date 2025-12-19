@@ -144,6 +144,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/global-search-settings",
                     },
                     {
+                      text: "User profile settings",
+                      link: "/documentation/extended-guide/frontend-configuration/user-profile-settings",
+                    },
+                    {
                       text: "Luigi global context",
                       link: "/documentation/extended-guide/frontend-configuration/luigi-global-context",
                     },
