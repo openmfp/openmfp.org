@@ -1,6 +1,6 @@
 # Customizing the User Profile
 
-The userProfileConfigService option allows you to define and manage the content of the
+The `userProfileConfigService` option allows you to define and manage the content of the
 [Luigi user profile](https://docs.luigi-project.io/docs/navigation-advanced?section=profile). 
 This dropdown, typically located in the top-right corner of the shell,
 contains links to user settings, profile overviews, and the logout functionality.
