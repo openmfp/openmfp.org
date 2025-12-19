@@ -144,6 +144,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/global-search-settings",
                     },
                     {
+                      text: "Luigi global context",
+                      link: "/documentation/extended-guide/frontend-configuration/luigi-global-context",
+                    },
+                    {
                       text: "Custom message listeners",
                       link: "/documentation/extended-guide/frontend-configuration/message-listeners",
                     },
