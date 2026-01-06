@@ -140,6 +140,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/routing-settings",
                     },
                     {
+                      text: "Node change hook settings",
+                      link: "/documentation/extended-guide/frontend-configuration/node-change-hook-settings",
+                    },
+                    {
                       text: "Global search settings",
                       link: "/documentation/extended-guide/frontend-configuration/global-search-settings",
                     },
