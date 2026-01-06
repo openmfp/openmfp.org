@@ -176,6 +176,10 @@ export default withMermaid({
                       link: "/documentation/extended-guide/frontend-configuration/luigi-node-context",
                     },
                     {
+                      text: "Luigi node processing",
+                      link: "/documentation/extended-guide/frontend-configuration/node-processing",
+                    },
+                    {
                       text: "Global nodes",
                       link: "/documentation/extended-guide/frontend-configuration/global-nodes",
                     },
