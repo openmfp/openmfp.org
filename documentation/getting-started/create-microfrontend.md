@@ -1,8 +1,8 @@
 # Create a Microfrontend
 
-In this section we are gonna create one simple Microfrontend using angular and integrate it into the Portal.
+In this section, we'll create a simple micro frontend using the [create-micro-frontend](https://github.com/openmfp/create-micro-frontend) tool and integrate it into the Portal.
 
-This is juts a simple example, you can use any other framework or technology to create your Microfrontend. If you already have one created you can skip the First part of this guide and jump to the [Step 3](#step-3-create-a-content-configuration-file).
+This is just an example. You can use any framework or technology to create your micro frontend. If you already have one, you can skip Step 1 and jump to [Step 3](#step-3-create-a-content-configuration-file).
 
 ## Portal
 
@@ -14,45 +14,46 @@ The OpenMFP Portal leverages the [Luigi](https://luigi-project.io/) Framework to
 
 ## Prerequisites
 - [Node.js](https://nodejs.org/en/download/) active LTS or maintenance LTS version.
-- Locally running Portal, if you don't have one follow [Installation guide](/documentation/getting-started/installation)
+- A locally running Portal. If you don't have one, follow the [Installation guide](/documentation/getting-started/installation).
 - npm (included with Node.js)
-- [Angular CLI](https://angular.io/cli) installed globally. If you don't have it installed, you can do so by running:
-```sh
-npm install -g @angular/cli
 
+## Step 1: Create a new micro frontend
+Run the following command to generate a new Angular-based micro frontend with an example page:
+
+:::info Script Configuration
+Visit [create-micro-frontend](https://github.com/openmfp/create-micro-frontend) to learn how to choose a different framework, omit the example page, and explore other options.
+:::
+
+```sh
+npx @openmfp/create-micro-frontend -y
 ```
-you can check if everything is installed by running:
-```sh
-ng version
-``` 
-this should show you the version of the Angular CLI, Node and the Package Manager npm.
 
-## Step 1: Create a new Angular Project
-Run the following command to generate a new Angular project:
-
-```sh
-ng new my-microfrontend
-```
+This command creates a new Angular project with an example page.
+:::info Example Page
+If you generate the project with the example page, it will show a blank screen when run outside the Portal. The example page includes a sample configuration for Portal integration and waits for the Portal to signal that everything is ready.
+:::
 
 Move into your project directory:
 
 ```sh
-cd my-microfrontend
+cd my-micro-frontend
 ```
 
 ## Step 2: Run the Angular App
 Start the development server:
 
 ```sh
-ng serve
+npm run start
 ```
-Then open your browser and go to: http://localhost:4200/
+Then open `http://localhost:4200/` in your browser.
 
 ## Step 3: Create a Content Configuration File
-Create a new file called `content-configuration.json` in the `public` folder of your Angular project or any path that will serve this file.
-This file will contain the configuration for your Microfrontend.
+If you used the [create-micro-frontend](https://github.com/openmfp/create-micro-frontend) tool, you can skip this step and move to [Step 4](#step-4-serve-the-content-configuration-file) because it already provides a preconfigured `content-configuration.json` in the `public` folder. Otherwise, follow the guide below.
 
-The following is an example of very minimal content configuration file. The contents of this file are described in great detail at [Configuration Documentation](https://github.com/openmfp/portal-ui-lib/blob/main/docs/readme-nodes-configuration.md#the-content-configuration-file-contents).
+Create a new file named `content-configuration.json` in the `public` folder of your Angular project (or any path you will serve this file from).
+This file contains the configuration for your micro frontend.
+
+Below is a minimal example. For a detailed reference, see the [Configuration documentation](https://github.com/openmfp/portal-ui-lib/blob/main/docs/readme-nodes-configuration.md#the-content-configuration-file-contents).
 
 ```json
 {
@@ -61,7 +62,7 @@ The following is an example of very minimal content configuration file. The cont
     "data": {
       "nodes": [
         {
-          "pathSegment": "ur-path-segment",
+          "pathSegment": "your-path-segment",
           "label": "My Microfrontend",
           "hideFromNav": false,
           "url": "http://localhost:4200/index.html",
@@ -79,16 +80,16 @@ The following is an example of very minimal content configuration file. The cont
 
 ## Step 4: Serve the Content Configuration File
 
-Restart the server and validate that the configuration is loaded correctly in the path http://localhost:4200/assets/content-configuration.json
+Verify that the configuration is available at `http://localhost:4200/content-configuration.json`. If it doesn't than try to restart the server
 
 ## Step 5: Consuming Local Content Configuration
-To see the Microfrontend in the OpenMFP Portal, you need to use your local `content-configuration.json` file.
-Go to the user button located in the top-right corner and navigate to **Settings** -> **Development**.
+To see your micro frontend in the OpenMFP Portal, you need to use your local `content-configuration.json` file.
+Open the user menu in the top-right corner and go to **Settings** -> **Development**.
 
-There, you will find the Local Development Mode. Activate **Is Development Mode Active** and enter the content configuration file path in the input field.
+There, you will find Local Development Mode. Enable **Is Development Mode Active** and enter the path to your content configuration file.
 
 ![Local Development Mode in the OpenMFP Portal](/settings.png)
 
-Click **Add** and then **Save**, and your Microfrontend should appear in the OpenMFP Portal.
+Click **Add**, then **Save**. Your micro frontend should now appear in the OpenMFP Portal.
 
 ![My Microfrontend in the OpenMFP Portal](/my-microfrontend.png)
