@@ -1,5 +1,4 @@
-# Customizing Luigi Node Change Hooks
-
+# Customizing Navigation Redirect Strategy
 This option allows you to customize where and how the portal stores the URL to redirect the user to after login (for example after session expiry or logout). By default the library uses `localStorage`. You can provide your own implementation of `NavigationRedirectStrategy` to use session storage, a backend, or custom logic.
 
 ## NavigationRedirectStrategy Interface
@@ -11,14 +10,10 @@ The `NavigationRedirectStrategy` interface defines three methods:
 - `clearRedirectUrl`: called right after navigation to the route returned from `getRedirectUrl`.
 
 ```ts
-import { LuigiNode } from '@openmfp/portal-ui-lib';
-
-export interface NodeChangeHookConfigService {
-    /**
-     * @param prevNode The LuigiNode the user is navigating away from.
-     * @param nextNode The LuigiNode the user is currently navigating to.
-     */
-    nodeChangeHook(prevNode: LuigiNode, nextNode: LuigiNode): void;
+export interface NavigationRedirectStrategy {
+  getRedirectUrl(): string;
+  saveRedirectUrl(url: string): void;
+  clearRedirectUrl(): void;
 }
 ```
 
