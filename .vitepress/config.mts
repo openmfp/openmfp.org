@@ -183,6 +183,10 @@ export default withMermaid({
                       text: "Global nodes",
                       link: "/documentation/extended-guide/frontend-configuration/global-nodes",
                     },
+                    {
+                      text: "Navigation redirect strategy",
+                      link: "/documentation/extended-guide/frontend-configuration/navigation-redirect-strategy",
+                    },
                   ],
                 },
                 {
