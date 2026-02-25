@@ -407,7 +407,7 @@ A title resolver configuration allows to fetch micro frontend specific data outs
 
 - **navHeader** - if defined at a node, a navigation header section is shown above the left-side navigation entries. There are two options how to define it:
     - statically by setting **icon**, **label** and optionally **type** properties, where icon can be an url to an image or an identifier of an icon.
-    - dynamically by setting the **use** property to **titleResolver**.
+    - dynamically by setting the **useTitleResolver** property to **titleResolver**.
 
 ### Feature Toggles
 
