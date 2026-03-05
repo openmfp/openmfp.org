@@ -33,3 +33,5 @@ Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file in this repository f
 ## Code of Conduct
 
 Please refer to the [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file in this repository for information on the expected Code of Conduct for contributing to OpenMFP.
+
+<p align="center"><img alt="Bundesministerium für Wirtschaft und Energie (BMWE)-EU funding logo" src="https://apeirora.eu/assets/img/BMWK-EU.png" width="400"/></p>
