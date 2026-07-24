@@ -30,7 +30,7 @@ OpenMFP chat lives on the [Linux Foundation Zulip server](https://linuxfoundatio
 
 ### Don't report security issues in chat
 
-Posting a vulnerability in public chat exposes it to potential attackers before a fix exists. Please follow our [security policy](https://github.com/openmfp/.github/blob/main/SECURITY.md) to report it through the project's private intake.
+Posting a vulnerability in public chat exposes it to potential attackers before a fix exists. Please follow our [security policy](https://github.com/openmfp/openmfp.org/security/policy) to report it through the project's private intake.
 
 ## Stay Updated
 
