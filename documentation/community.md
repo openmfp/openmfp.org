@@ -19,8 +19,22 @@ We strive to maintain a respectful and inclusive environment. Please follow our 
 
 By participating, you agree to foster a positive, collaborative, and welcoming space for everyone.
 
+## Chat
+
+OpenMFP chat lives on the [Linux Foundation Zulip server](https://linuxfoundation.zulipchat.com/). Two channels cover most conversations.
+
+| Channel | Use it for |
+| --- | --- |
+| [`neonephos-openmfp-discussion`](https://linuxfoundation.zulipchat.com/#narrow/channel/neonephos-openmfp-discussion) | Design discussions, RFCs, and general questions about OpenMFP. |
+| [`neonephos-openmfp-support`](https://linuxfoundation.zulipchat.com/#narrow/channel/neonephos-openmfp-support) | Help with installing, running, or operating OpenMFP. |
+
+### Don't report security issues in chat
+
+Posting a vulnerability in public chat exposes it to potential attackers before a fix exists. Please follow our [security policy](https://github.com/openmfp/openmfp.org/security/policy) to report it through the project's private intake.
+
 ## Stay Updated
 
 - **Engage on GitHub Discussions**: Join the conversation and collaborate with the community.
+- **Chat on Zulip**: Join the [Linux Foundation Zulip server](https://linuxfoundation.zulipchat.com/) for real-time discussions.
 
 
