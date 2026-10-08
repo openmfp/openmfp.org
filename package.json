@@ -9,6 +9,6 @@
     "vitepress-plugin-mermaid": "2.0.17"
   },
   "overrides": {
-    "vite": "6.4.3"
+    "vite": "8.3.2"
   }
 }
