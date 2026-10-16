@@ -187,6 +187,10 @@ export default withMermaid({
                       text: "Navigation redirect strategy",
                       link: "/documentation/extended-guide/frontend-configuration/navigation-redirect-strategy",
                     },
+                    {
+                      text: "Analytics tracking",
+                      link: "/documentation/extended-guide/frontend-configuration/analytics-tracker",
+                    },
                   ],
                 },
                 {
