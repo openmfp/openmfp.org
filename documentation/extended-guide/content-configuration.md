@@ -354,7 +354,7 @@ The following section explains Portal-specific parameters related to entity type
         - `pluralLabel`: The (localized) entity plural label
         - `notFoundConfig`: an object with the following properties:
             - `entityListNavigationContext`: a string containing the luigi navigation context that has been specified for the entity list node
-            - `sapIllusSVG`: Fiori Moments illustration to be shown on error page, one of [the portal-ui-lib assets](https://github.com/openmfp/portal-ui-lib/tree/c895383f645d7c3fc653c2a340bb32fffddf7af7/projects/lib/src/assets/moments), without ``sapIllus-` prefix and file ending (e.g. **Dialog-BeforeSearch-Alt**)
+            - `sapIllusSVG`: name of the Fiori Moments illustration to show on the error page, without the `sapIllus-` prefix or file extension (e.g. **Dialog-BeforeSearch-Alt**)
 
 - **defineSlot** - a node defining an entity can provide a certain structure for it's direct child nodes by defining slot nodes, which have the **defineSlot** property set. If its value is an empty string, it means it is the default slot. Additionally, a category can be defined for a slot node, so all extension nodes assigned to that slot are part of that category.
 
