@@ -354,7 +354,7 @@ The following section explains Portal-specific parameters related to entity type
         - `pluralLabel`: The (localized) entity plural label
         - `notFoundConfig`: an object with the following properties:
             - `entityListNavigationContext`: a string containing the luigi navigation context that has been specified for the entity list node
-            - `sapIllusSVG`: Fiori Moments illustration to be shown on error page, one of (https://github.com/openmfp/portal-ui-lib/tree/main/src/assets/moments), without ``sapIllus-` prefix and file ending (e.g. **Dialog-BeforeSearch-Alt**)
+            - `sapIllusSVG`: Fiori Moments illustration to be shown on error page, one of [the portal-ui-lib assets](https://github.com/openmfp/portal-ui-lib/tree/c895383f645d7c3fc653c2a340bb32fffddf7af7/projects/lib/src/assets/moments), without ``sapIllus-` prefix and file ending (e.g. **Dialog-BeforeSearch-Alt**)
 
 - **defineSlot** - a node defining an entity can provide a certain structure for it's direct child nodes by defining slot nodes, which have the **defineSlot** property set. If its value is an empty string, it means it is the default slot. Additionally, a category can be defined for a slot node, so all extension nodes assigned to that slot are part of that category.
 
@@ -497,8 +497,7 @@ LuigiClient
 ```
 
 ### Localization (i18n)
-The functions [getCurrentLocale](https://docs.luigi-project.io/docs/luigi-client-api/?section=getcurrentlocale) and [setCurrentLocale](https://docs.luigi-project.io/docs/luigi-client-api/?section=setcurrentlocale) for your micro frontend. It also offers the Portal-specific [**texts** parameter](#portal-specific-parameters
-Luigi of) used in the `content-configuration.json` [example](#configuration-file) above. This allows you to translate the side navigation / settings dialog entries.
+Luigi offers the functions [getCurrentLocale](https://docs.luigi-project.io/docs/luigi-client-api/?section=getcurrentlocale) and [setCurrentLocale](https://docs.luigi-project.io/docs/luigi-client-api/?section=setcurrentlocale) for your micro frontend. OpenMFP also offers the Portal-specific [**texts** parameter](#portal-specific-configuration-parameters), used in the `content-configuration.json` [example](#the-content-configuration-file-contents) above. This allows you to translate the side navigation / settings dialog entries.
 
 If you are using [localization](https://docs.luigi-project.io/docs/i18n) and translating your page into different languages, you can also add a `i18n.currentLocale` parameter to the viewUrl part of your configuration:
 
