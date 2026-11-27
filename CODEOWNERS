@@ -2,3 +2,6 @@
 * @openmfp/frame @openmfp/tsc
 go.mod
 go.sum
+
+# CI and workflow files require CI maintainer review
+/.github/ @openmfp/ci-maintainers
